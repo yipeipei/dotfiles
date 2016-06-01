@@ -1,0 +1,7 @@
+# Emulate "Screenshot 2015-06-30 18.02.10.png"
+
+FastStone Capture
+Filename Template: Screenshot $Y-$M-$D $H.$N.$S
+
+ShareX
+File naming: Screenshot %y-%mo-%d %h.%mi.%s
