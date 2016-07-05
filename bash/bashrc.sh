@@ -25,3 +25,7 @@ ssh-add -l -E md5
 
 # Git
 source "$DOTFILES/git/gitrc.sh"
+
+# History
+export HISTSIZE=1000000
+export HISTFILESIZE=1000000
