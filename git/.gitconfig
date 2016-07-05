@@ -1,0 +1,32 @@
+[core]
+	excludesfile = /home/csppyi/.gitignore_global
+	autocrlf = input
+[alias]
+	ignore = "!gi() { curl -L -s https://www.gitignore.io/api/$@ ;}; gi"
+	pp = !git pull && git push
+	st = status -sb
+	br = branch
+	co = checkout
+	au = add -u
+	ci = commit
+	ca = commit --amend
+	cp = cherry-pick
+	unstage = reset HEAD --
+	lo = log --oneline
+	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+	lc = log ORIG_HEAD.. --stat --no-merges
+	last = log -1 --stat
+	df = diff
+	dfc = diff --cached
+	dc = diff --color-words='[A-z0-9_]+|[^[:space:]]'
+	dcc = diff --color-words='[A-z0-9_]+|[^[:space:]]' --cached
+	who = shortlog -s --
+	up = !git pull --rebase --prune  && git submodule update --init --recursive
+	undo = reset --hard
+	save = !git add -A && git commit -m 'SAVEPOINT'
+	wip = commit -am 'WIP'
+	cont = reset HEAD~1 --mixed
+	wipe = wipe = !git add -A && git commit -qm 'WIPE SAVEPOINT' && git reset HEAD~1 --hard
+[user]
+	name = YI Peipei
+	email = yipeipei@gmail.com
