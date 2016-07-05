@@ -16,8 +16,8 @@ if [ -n "$ZSH_VERSION" ]; then
 fi
 
 # Base directory
-export DOTFILES_BASH="${$(readlink $HOME/.bashrc)%/*}"
-export DOTFILES="${DOTFILES_BASH%/*}"
+export DOTFILES_BASH="$(dirname "$(readlink $HOME/.bashrc)")"
+export DOTFILES="$(dirname "${DOTFILES_BASH}")"
 
 # SSH
 source "$DOTFILES/ssh/auto-launch-ssh-agent.sh"
