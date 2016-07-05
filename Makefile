@@ -9,3 +9,6 @@ setup-shell:
 	# ./bash/install-bashrc.sh
 	./ln.sh -s -f $(shell pwd)/bash/bashrc.sh ~/.bashrc
 	./ln.sh -s -f $(shell pwd)/bash/bashrc.sh ~/.zshrc
+
+setup-ssh:
+	./ln.sh -s -f $(shell pwd)/ssh/keys ~/.ssh
