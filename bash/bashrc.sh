@@ -32,5 +32,5 @@ export HISTFILESIZE=1000000
 
 # CSR
 if [[ "$(hostname)" =~ "^csr" ]]; then
-    soruce "$DOTFILES/bash/bashrc_csr.sh"
+    soruce "$DOTFILES/csr/bashrc_csr.sh"
 fi
