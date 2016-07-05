@@ -2,7 +2,7 @@
 
 # https://help.github.com/articles/working-with-ssh-key-passphrases/#auto-launching-ssh-agent-on-git-for-windows
 
-env=~/.ssh/agent.env
+env="$HOME/.ssh/agent.env.$(hostname)"
 
 agent_load_env () { test -f "$env" && . "$env" >| /dev/null ; }
 
