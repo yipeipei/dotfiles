@@ -29,3 +29,8 @@ source "$DOTFILES/git/gitrc.sh"
 # History
 export HISTSIZE=1000000
 export HISTFILESIZE=1000000
+
+# CSR
+if [[ "$(hostname)" =~ "^csr" ]]; then
+    soruce "$DOTFILES/bash/bashrc_csr.sh"
+fi
