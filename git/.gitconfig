@@ -1,6 +1,7 @@
 [core]
 	excludesfile = /home/csppyi/.gitignore_global
 	autocrlf = input
+	trustctime = false
 [alias]
 	ignore = "!gi() { curl -L -s https://www.gitignore.io/api/$@ ;}; gi"
 	pp = !git pull && git push
@@ -30,3 +31,5 @@
 [user]
 	name = YI Peipei
 	email = yipeipei@gmail.com
+[push]
+	default = simple
