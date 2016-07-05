@@ -14,3 +14,11 @@ if [ -n "$ZSH_VERSION" ]; then
     export PATH=$HOME/bin:/usr/local/bin:$PATH
     source $ZSH/oh-my-zsh.sh
 fi
+
+# Base directory
+export DOTFILES_BASH="${$(readlink $HOME/.bashrc)%/*}"
+export DOTFILES="${DOTFILES_BASH%/*}"
+
+# SSH
+source "$DOTFILES/ssh/auto-launch-ssh-agent.sh"
+ssh-add -l -E md5
