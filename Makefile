@@ -1,9 +1,11 @@
 setup-git:
-	ln -s -f $(shell pwd)/git/.gitconfig ~/.gitconfig
-	ln -s -f $(shell pwd)/git/.gitignore_global ~/.gitignore_global
+	./ln.sh -s -f $(shell pwd)/git/.gitconfig ~/.gitconfig
+	./ln.sh -s -f $(shell pwd)/git/.gitignore_global ~/.gitignore_global
 
 setup-cygwin:
-	ln -s -f $(shell pwd)/cygwin/.minttyrc ~/.minttyrc
+	./ln.sh -s -f $(shell pwd)/cygwin/.minttyrc ~/.minttyrc
 
-setup-bash:
-	./bash/install-bashrc.sh
+setup-shell:
+	# ./bash/install-bashrc.sh
+	./ln.sh -s -f $(shell pwd)/bash/bashrc.sh ~/.bashrc
+	./ln.sh -s -f $(shell pwd)/bash/bashrc.sh ~/.zshrc
