@@ -1,0 +1,15 @@
+Host *
+    HashKnownHosts yes
+    Protocol 2
+    # CVE-2016-0777 and CVE-2016-0778
+    UseRoaming no
+
+Host faith
+    User csppyi
+    HostName faith.comp.hkbu.edu.hk
+    ForwardAgent yes
+
+Host cs*
+    User csppyi
+    HostName %h.comp.hkbu.edu.hk
+    ForwardAgent yes
