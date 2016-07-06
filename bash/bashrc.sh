@@ -6,6 +6,9 @@
 # Info
 ls -l $SHELL
 
+# Autojump
+[[ -s $HOME/.autojump/etc/profile.d/autojump.sh ]] && source $HOME/.autojump/etc/profile.d/autojump.sh
+
 # Zsh
 if [ -n "$ZSH_VERSION" ]; then
     export ZSH=$HOME/.oh-my-zsh
