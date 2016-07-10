@@ -5,7 +5,7 @@ setup-git:
 setup-cygwin:
 	./ln.sh -s -f $(shell pwd)/cygwin/.minttyrc ~/.minttyrc
 
-setup-shell:
+setup-bash:
 	# ./bash/install-bashrc.sh
 	./ln.sh -s -f $(shell pwd)/bash/bashrc.sh ~/.bashrc
 
