@@ -6,7 +6,6 @@ setup-cygwin:
 	./ln.sh -s -f $(shell pwd)/cygwin/.minttyrc ~/.minttyrc
 
 setup-bash:
-	# ./bash/install-bashrc.sh
 	./ln.sh -s -f $(shell pwd)/bash/bashrc.sh ~/.bashrc
 
 setup-ssh:
