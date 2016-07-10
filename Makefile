@@ -2,7 +2,7 @@ setup-bash:
 	./ln.sh -s -f $(shell pwd)/bash/bashrc.sh ~/.bashrc
 
 setup-ssh:
-	./ln.sh -s -f $(shell pwd)/ssh/keys ~/.ssh
+	./ln.sh -s -f -T $(shell pwd)/ssh/keys ~/.ssh
 
 setup-git:
 	./ln.sh -s -f $(shell pwd)/git/gitconfig ~/.gitconfig
