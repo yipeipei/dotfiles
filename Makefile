@@ -10,3 +10,8 @@ setup-bash:
 
 setup-ssh:
 	./ln.sh -s -f $(shell pwd)/ssh/keys ~/.ssh
+
+setup-autojump:
+	git clone git://github.com/joelthelion/autojump.git
+	cd autojump && ./install.py
+	rm -rf autojump
