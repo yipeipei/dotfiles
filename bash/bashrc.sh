@@ -9,15 +9,6 @@ ls -l $SHELL
 # Autojump
 [[ -s $HOME/.autojump/etc/profile.d/autojump.sh ]] && source $HOME/.autojump/etc/profile.d/autojump.sh
 
-# Zsh
-if [ -n "$ZSH_VERSION" ]; then
-    export ZSH=$HOME/.oh-my-zsh
-    ZSH_THEME="babun"
-    plugins=(git)
-    export PATH=$HOME/bin:/usr/local/bin:$PATH
-    source $ZSH/oh-my-zsh.sh
-fi
-
 # Base directory
 export DOTFILES_BASH="$(dirname "$(readlink $HOME/.bashrc)")"
 export DOTFILES="$(dirname "${DOTFILES_BASH}")"
