@@ -31,5 +31,5 @@ fi
 
 # CSR
 if [[ "$(hostname)" =~ "^csr" ]]; then
-    soruce "$DOTFILES/csr/bashrc_csr.sh"
+    source "$DOTFILES/csr/bashrc_csr.sh"
 fi
