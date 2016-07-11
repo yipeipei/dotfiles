@@ -3,4 +3,4 @@
 # Run Cygwin as administrator
 
 apt-cyg install chere
-chere -i -t mintty -s bash -e "Open Cygwin Here" -f
+chere -i -t mintty -s bash -o "-i /Cygwin-Terminal.ico" -e "Open Cygwin Here" -f
