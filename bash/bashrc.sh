@@ -23,6 +23,12 @@ env | grep GIT_
 export HISTSIZE=1000000
 export HISTFILESIZE=1000000
 
+# Cygwin
+# e.g. CYGWIN_NT-6.1
+if [[ "$(uname)" =~ "CYGWIN" ]]; then
+    source "$DOTFILES/cygwin/bashrc_cygwin.sh"
+fi
+
 # CSR
 if [[ "$(hostname)" =~ "^csr" ]]; then
     soruce "$DOTFILES/csr/bashrc_csr.sh"

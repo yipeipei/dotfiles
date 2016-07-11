@@ -1,0 +1,2 @@
+# Aliases
+alias open=cygstart
