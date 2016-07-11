@@ -1,12 +1,12 @@
 setup-bash:
-	./ln.sh -s -f $(shell pwd)/bash/bashrc.sh ~/.bashrc
+	./ln.sh $(shell pwd)/bash/bashrc.sh ~/.bashrc
 
 setup-ssh:
-	./ln.sh -s -f -T $(shell pwd)/ssh/keys ~/.ssh
+	./ln.sh $(shell pwd)/ssh/keys ~/.ssh
 
 setup-git:
-	./ln.sh -s -f $(shell pwd)/git/gitconfig ~/.gitconfig
-	./ln.sh -s -f $(shell pwd)/git/gitignore_global ~/.gitignore_global
+	./ln.sh $(shell pwd)/git/gitconfig ~/.gitconfig
+	./ln.sh $(shell pwd)/git/gitignore_global ~/.gitignore_global
 
 setup-autojump:
 	git clone git://github.com/joelthelion/autojump.git
@@ -14,4 +14,4 @@ setup-autojump:
 	rm -rf autojump
 
 setup-cygwin: setup-bash setup-ssh setup-git setup-autojump
-	./ln.sh -s -f $(shell pwd)/cygwin/minttyrc.sh ~/.minttyrc
+	./ln.sh $(shell pwd)/cygwin/minttyrc.sh ~/.minttyrc

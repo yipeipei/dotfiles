@@ -5,4 +5,4 @@ for last; do true; done
 if [ -e "${last}" ] && [ ! -L "${last}" ]; then
     mv -v "${last}" "${last}.old"
 fi
-ln "$@"
+ln -f -s -T "$@"
