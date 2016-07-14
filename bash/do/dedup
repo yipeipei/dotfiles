@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+# Compare file $1 and $2, remove $2 if they are identical
+
+if [[ ! -f "$1" || ! -f "$2" ]]; then
+    echo dedup REFERENCE DUPLICATE
+elif [[ -L "$1" || -L "$2" ]]; then
+    echo No symbolic links.
+elif [[ "$1" == "$2" ]]; then
+    echo One file.
+elif [[ "$(du -b "$1" | cut -f1)" != "$(du -b "$2" | cut -f1)" ]]; then
+    echo Different file sizes.
+elif cmp -s "$1" "$2"; then
+    echo Identical.
+    echo Remove "$2".
+    rm "$2"
+else
+    echo Not identical.
+fi
