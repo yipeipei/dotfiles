@@ -11,6 +11,9 @@ ls -l $SHELL
 export DOTFILES_BASH="$(dirname "$(readlink $HOME/.bashrc)")"
 export DOTFILES="$(dirname "${DOTFILES_BASH}")"
 
+# PATH
+export PATH="$DOTFILES_BASH/do:$PATH"
+
 # SSH
 source "$DOTFILES/ssh/auto-launch-ssh-agent.sh"
 ssh-add -l -E md5
