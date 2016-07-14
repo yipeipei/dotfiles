@@ -1,6 +1,3 @@
-# Info
-quota -s
-
 # Aliases
 alias open=cygstart
 alias pbcopy="cat > /dev/clipboard"
