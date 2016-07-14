@@ -1,9 +1,13 @@
 #!/usr/bin/env bash
 # Compute or check SHA256 message digest
 
-for last; do true; done
-if [[ -e "${last}.SHA256SUM" ]]; then
-    sha256sum -c "${last}.SHA256SUM"
+if [[ $# -ne 1 || ! -f "$1" ]]; then
+    echo check FILE
+    exit
+fi
+
+if [[ -e "$1.SHA256SUM" ]]; then
+    sha256sum -c "$1.SHA256SUM"
 else
-    sha256sum "${last}" > "${last}.SHA256SUM"
+    sha256sum "$1" > "$1.SHA256SUM"
 fi
