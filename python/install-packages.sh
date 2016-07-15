@@ -6,3 +6,4 @@ python3 -m ensurepip --upgrade
 
 pip3 install --upgrade pip
 pip3 install --upgrade youtube-dl
+pip3 install --upgrade pythonpy
