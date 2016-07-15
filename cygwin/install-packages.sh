@@ -34,6 +34,9 @@ dev_misc=(
     "openssl-devel"
     "libffi-devel"
     "ImageMagick"
+    # lxml
+    "libxml2-devel"
+    "libxslt-devel"
     )
 
 libboost=(
