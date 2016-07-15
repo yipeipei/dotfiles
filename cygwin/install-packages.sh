@@ -14,6 +14,7 @@ common_tools=(
     "emacs"
     "aspell"
     "aspell-en"
+    "gnupg"
     "gnuplot"
     "graphviz"
     "ghostscript"
