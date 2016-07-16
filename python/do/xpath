@@ -1,0 +1,16 @@
+#!/usr/bin/env python3
+# Parse HTML and select elements using a XPATH selector
+
+import sys
+import lxml.html
+
+if __name__ == '__main__':
+    if len(sys.argv) != 2:
+        print('Usage: xpath XPATH')
+        sys.exit()
+    tree = lxml.html.parse(sys.stdin)
+    elements = tree.xpath(sys.argv[1])
+    for i, e in enumerate(elements):
+        if isinstance(e, lxml.html.HtmlElement):
+            e = lxml.html.tostring(e, encoding='UTF-8').decode('UTF-8')
+        print(i, e)
