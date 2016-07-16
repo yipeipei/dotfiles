@@ -6,7 +6,7 @@ if [[ $# -ne 1 || ! -f "$1" ]]; then
     exit
 fi
 
-if [[ -f "$1.SHA256SUM" && "$1.SHA256SUM" -nt "$1" ]]; then
+if [[ -f "$1.SHA256SUM" ]]; then
     sha256sum -c "$1.SHA256SUM"
 else
     sha256sum "$1" > "$1.SHA256SUM"
