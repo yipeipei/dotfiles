@@ -2,21 +2,24 @@
 # Compare file $1 and $2, remove $2 if existing checksums are identical
 
 if [[ ! -f "$1" || ! -f "$2" ]]; then
-    echo pdedup REFERENCE DUPLICATE
+    echo Usage: pdedup REFERENCE DUPLICATE
 elif [[ -L "$1" || -L "$2" ]]; then
     echo No symbolic links.
 elif [[ "$1" == "$2" ]]; then
     echo One file.
 
-elif [[ ! -f "$1.SHA256SUM" || ! -f "$2.SHA256SUM" ]]; then
+elif [[ -f "$1.SHA256SUM" && "$1.SHA256SUM" -nt "$1" \
+    &&  -f "$2.SHA256SUM" && "$2.SHA256SUM" -nt "$2" ]]; then
+    if [[ "$(head -c 64 "$1.SHA256SUM")" == "$(head -c 64 "$2.SHA256SUM")" ]]; then
+        echo Identical existing checksums.
+        echo Remove "$2" and "$2.SHA256SUM".
+        rm "$2"
+        rm "$2.SHA256SUM"
+    else
+        echo Not identical.
+    fi
+else
     echo Use check to ensure
     echo "$1.SHA256SUM"
     echo "$2.SHA256SUM"
-elif [[ "$(head -c 64 "$1.SHA256SUM")" == "$(head -c 64 "$2.SHA256SUM")" ]]; then
-    echo Identical existing checksums.
-    echo Remove "$2" and "$2.SHA256SUM".
-    rm "$2"
-    rm "$2.SHA256SUM"
-else
-    echo Not identical.
 fi

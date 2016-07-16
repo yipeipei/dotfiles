@@ -2,7 +2,7 @@
 # Compute or check SHA256 message digest
 
 if [[ $# -ne 1 || ! -f "$1" ]]; then
-    echo check FILE
+    echo Usage: check FILE
     exit
 fi
 

@@ -2,7 +2,7 @@
 # Compare file $1 and $2, remove $2 if they are identical
 
 if [[ ! -f "$1" || ! -f "$2" ]]; then
-    echo dedup REFERENCE DUPLICATE
+    echo Usage: dedup REFERENCE DUPLICATE
 elif [[ -L "$1" || -L "$2" ]]; then
     echo No symbolic links.
 elif [[ "$1" == "$2" ]]; then
