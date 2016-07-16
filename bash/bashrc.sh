@@ -12,7 +12,8 @@ export DOTFILES_BASH="$(dirname "$(readlink $HOME/.bashrc)")"
 export DOTFILES="$(dirname "${DOTFILES_BASH}")"
 
 # PATH
-export PATH="$DOTFILES_BASH/do:$PATH"
+export PATH="$DOTFILES/bash/do:$PATH"
+export PATH="$DOTFILES/python/do:$PATH"
 
 # SSH
 source "$DOTFILES/ssh/auto-launch-ssh-agent.sh"
