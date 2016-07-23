@@ -1,0 +1,77 @@
+#!/usr/bin/env python3
+# Open files on Dropbox, Google Drive, GitHub, Bitbucket
+
+import sys
+import os
+import os.path
+
+open_cmd = 'open "{}"'
+if sys.platform.startswith('cygwin'):
+    open_cmd = 'cygstart "{}"'
+
+
+def open_dropbox(file):
+    # https://www.dropbox.com/home
+    # https://www.dropbox.com/home/PhD
+    # https://www.dropbox.com/home/PhD?preview=asi.txt
+    # https://www.dropbox.com/home/PhD/asi.txt  OK
+    file_path = os.path.realpath(file)
+    dropbox_path = os.path.realpath(os.path.expandvars('$HOME/Dropbox'))
+    if file_path.startswith(dropbox_path):
+        return 'https://www.dropbox.com/home' + file_path.replace(dropbox_path, '')
+
+
+def open_google_drive(file):
+    # https://drive.google.com/a/life.hkbu.edu.hk/?authuser=1#my-drive
+    # https://drive.google.com/drive/u/1/folders/0B5jJpvsJSpMUTVpPVEtHYXp0Mzg
+    file_path = os.path.realpath(file)
+    drive_path = os.path.realpath(os.path.expandvars('$HOME/Google Drive'))
+    if file_path.startswith(drive_path):
+        return 'https://drive.google.com/a/life.hkbu.edu.hk/'  # TODO
+
+
+def open_git(file):
+    # https://github.com/yipeipei/dotfiles
+    # https://github.com/yipeipei/dotfiles/tree/master/bash  OK
+    # https://github.com/yipeipei/dotfiles/blob/master/bash/bashrc.sh
+    # https://bitbucket.org/yipeipei/autoc/src
+    # https://bitbucket.org/yipeipei/autoc/src/63ab7441d83a5a292d81467c3a4f96e9aedda60c/LICENSE?fileviewer=file-view-default
+    # https://bitbucket.org/yipeipei/autoc/src/ddce1ed3379755140df92bb085a3d05cc97a7b1d/?at=bgl
+    # https://bitbucket.org/yipeipei/autoc/src/ddce1ed3379755140df92bb085a3d05cc97a7b1d/code/?at=bgl
+    # https://bitbucket.org/yipeipei/autoc/src/ddce1ed3379755140df92bb085a3d05cc97a7b1d/code/CMakeLists.txt?at=bgl&fileviewer=file-view-default
+    file_path = os.path.realpath(file)
+    if os.system('git rev-parse') == 0:
+        remote = os.popen('git remote get-url origin').read().strip()
+        # git@github.com:yipeipei/dotfiles.git
+        # git@bitbucket.org:yipeipei/autoc.git
+        remote = remote.replace('git@', '').replace(':', '/').replace('.git', '')
+
+        branch = os.popen('git rev-parse --abbrev-ref HEAD').read().strip()
+
+        top_path = os.popen('git rev-parse --show-toplevel').read().strip()
+        relpath = file_path.replace(top_path, '')
+
+        sha1 = os.popen('git rev-parse HEAD').read().strip()
+
+        if remote.startswith('github'):
+            return 'https://{}/tree/{}{}'.format(remote, branch, relpath)
+        elif remote.startswith('bitbucket'):
+            return 'https://{}/src/{}{}'.format(remote, sha1, relpath)
+
+
+if __name__ == '__main__':
+    if len(sys.argv) != 2:
+        print('Usage: wopen FILE')
+        sys.exit()
+
+    file = sys.argv[1]
+    if not os.path.exists(file):
+        print(file, 'not exists.')
+        sys.exit()
+
+    url = open_dropbox(file) or open_google_drive(file) or open_git(file)
+    if url:
+        print(url)
+        os.system(open_cmd.format(url))
+    else:
+        print('Remote not found.')
