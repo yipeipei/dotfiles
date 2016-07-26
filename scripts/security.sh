@@ -18,3 +18,4 @@ yum -y install logwatch
 cat > /etc/cron.daily/00logwatch << EOF
 /usr/sbin/logwatch --output mail --mailto yipeipei@gmail.com --detail high
 EOF
+chmod 755 /etc/cron.daily/00logwatch
