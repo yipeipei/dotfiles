@@ -59,7 +59,7 @@ conn IPSec-IKEv2
 conn IPSec-IKEv2-EAP
     also="IPSec-IKEv2"
     rightauth=eap-mschapv2
-    rightauthby2=pubkey
+    rightauth2=pubkey
     rightsendcert=never
     eap_identity=%any
 
