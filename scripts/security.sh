@@ -11,6 +11,7 @@
 yum -y update
 
 # Install fail2ban
+yum -y install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
 yum -y install fail2ban
 
 # Install logwatch to keep an eye on things

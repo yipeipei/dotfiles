@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-set -e
-
 source ./configure.sh
 
 if [[ $# -ne 2 ]]; then

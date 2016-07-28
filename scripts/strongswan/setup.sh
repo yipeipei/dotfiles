@@ -3,8 +3,6 @@
 
 # https://raymii.org/s/tutorials/IPSEC_vpn_with_CentOS_7.html
 
-set -e
-
 source ./configure.sh
 
 # Install packages
