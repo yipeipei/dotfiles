@@ -13,7 +13,7 @@ if __name__ == '__main__':
         print('Usage: fdate FILE')
         sys.exit()
 
-    file = sys.argv[1]
+    file = os.path.realpath(sys.argv[1])
     if not os.path.exists(file):
         print(file, 'not exists.')
         sys.exit()
