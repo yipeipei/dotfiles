@@ -13,6 +13,7 @@ setup-git:
 
 setup-git-extra:
 	curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash -o ~/.git-completion.bash
+	curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh -o ~/.git-prompt.sh
 
 setup-autojump:
 	git clone git://github.com/joelthelion/autojump.git
