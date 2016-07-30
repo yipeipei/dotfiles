@@ -28,6 +28,8 @@ if [ -f ~/.git-completion.bash ]; then
     source ~/.git-completion.bash
 fi
 
+PS1='\[\e]0;\w\a\]\n\[\e[32m\]\u@\h \[\e[33m\]\w\[\e[0m\]\n\$ '
+
 # History
 export HISTSIZE=1000000
 export HISTFILESIZE=1000000
