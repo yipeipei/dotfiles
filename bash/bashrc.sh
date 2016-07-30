@@ -23,6 +23,11 @@ ssh-add -l -E md5
 source "$DOTFILES/git/gitrc.sh"
 env | grep GIT_
 
+# Autocomplete git commands, branch and tag names
+if [ -f ~/.git-completion.bash ]; then
+    source ~/.git-completion.bash
+fi
+
 # History
 export HISTSIZE=1000000
 export HISTFILESIZE=1000000

@@ -11,6 +11,9 @@ setup-git:
 	./ln.sh "$(shell pwd)/git/gitconfig" "${HOME}/.gitconfig"
 	./ln.sh "$(shell pwd)/git/gitignore_global" "${HOME}/.gitignore_global"
 
+setup-git-extra:
+	curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash -o ~/.git-completion.bash
+
 setup-autojump:
 	git clone git://github.com/joelthelion/autojump.git
 	cd autojump && ./install.py
