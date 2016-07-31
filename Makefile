@@ -20,8 +20,9 @@ setup-autojump:
 	cd autojump && ./install.py
 	rm -rf autojump
 
-setup-cygwin: setup-bash setup-ssh setup-git setup-autojump
+setup-cygwin: setup-bash setup-ssh setup-git setup-git-extra setup-autojump
 	./ln.sh "$(shell pwd)/cygwin/minttyrc.sh" "${HOME}/.minttyrc"
 	./ln.sh "$(shell cygpath ${USERPROFILE})/Dropbox" "${HOME}/Dropbox"
 	./ln.sh "$(shell cygpath ${USERPROFILE})/Google Drive" "${HOME}/Google Drive"
 	./ln.sh "$(shell cygpath ${USERPROFILE})/Music" "${HOME}/Music"
+	./ln.sh "$(shell cygpath ${USERPROFILE})/wd" "${HOME}/wd"
