@@ -1,29 +1,39 @@
 [core]
-	excludesfile = /home/csppyi/.gitignore_global
+	excludesfile = ~/.gitignore_global
 	autocrlf = input
 	trustctime = false
 [alias]
-	ignore = "!gi() { curl -L -s https://www.gitignore.io/api/$@ ;}; gi"
-	pp = !git pull && git push
-	st = status -sb
+	# Shortcuts
+	# https://git.wiki.kernel.org/index.php/Aliases#Shortcuts
+	st = status
+	ci = commit
 	br = branch
 	co = checkout
-	au = add -u
-	ci = commit
-	ca = commit --amend
-	cp = cherry-pick
-	unstage = reset HEAD --
-	lo = log --oneline
-	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
-	lc = log ORIG_HEAD.. --stat --no-merges
-	last = log -1 --stat
 	df = diff
-	dfc = diff --cached
-	dc = diff --color-words='[A-z0-9_]+|[^[:space:]]'
-	dcc = diff --color-words='[A-z0-9_]+|[^[:space:]]' --cached
+	dc = diff --cached
+	lg = log -p
 	who = shortlog -s --
 
+	# Alias
+	# https://git.wiki.kernel.org/index.php/Aliases#alias
+	alias = "!sh -c '[ $# = 2 ] && git config --global alias.\"$1\" \"$2\" && exit 0 || echo \"usage: git alias <new alias> <original command>\" >&2 && exit 1' -"
+	aliases = !git config --get-regexp 'alias.*' | colrm 1 6 | sed 's/[ ]/ = /'
+
+	# Pretty logs
+	# https://git.wiki.kernel.org/index.php/Aliases#Getting_pretty_logs
+	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+
+	# Word diff
+	# https://wiki.math.cmu.edu/iki/wiki/tips/20140301-git-latexdiff.html
+	wdf = diff --color-words --ignore-all-space
+	wdc = diff --cached --color-words --ignore-all-space
+
+	# gitignore.io
+	# https://www.gitignore.io/docs
+	ignore = "!gi() { curl -L -s https://www.gitignore.io/api/$@ ;}; gi"
+
 	# GitHub Flow
+	# http://haacked.com/archive/2014/07/28/github-flow-aliases/
 	co = checkout
 	ec = config --global -e
 	up = !git pull --rebase --prune $@ && git submodule update --init --recursive
@@ -36,7 +46,20 @@
 	wipe = !git add -A && git commit -qm 'WIPE SAVEPOINT' && git reset HEAD~1 --hard
 	bclean = "!f() { git branch --merged ${1-master} | grep -v " ${1-master}$" | xargs -r git branch -d; }; f"
 	bdone = "!f() { git checkout ${1-master} && git up && git bclean ${1-master}; }; f"
+	# http://haacked.com/archive/2015/06/29/git-migrate/
 	migrate = "!f(){ CURRENT=$(git symbolic-ref --short HEAD); git checkout -b $1 && git branch --force $CURRENT ${3-'$CURRENT@{u}'} && git rebase --onto ${2-master} $CURRENT; }; f"
+
+	# Misc
+	pp = !git pull && git push
+	sb = status -sb
+	au = add -u
+	cp = cherry-pick
+	lo = log --oneline
+	# https://git.wiki.kernel.org/index.php/Aliases#A_shortcut_for_seeing_the_fetched_commits
+	lc = log ORIG_HEAD.. --stat --no-merges
+	# https://git-scm.com/book/en/v2/Git-Basics-Git-Aliases
+	unstage = reset HEAD --
+	last = log -1 HEAD
 [user]
 	name = YI Peipei
 	email = yipeipei@gmail.com
