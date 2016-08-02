@@ -25,8 +25,12 @@
 
 	# Word diff
 	# https://wiki.math.cmu.edu/iki/wiki/tips/20140301-git-latexdiff.html
-	wdf = diff --color-words --ignore-all-space
-	wdc = diff --cached --color-words --ignore-all-space
+	wdf = diff --ignore-all-space --color-words
+	wdc = diff --ignore-all-space --color-words --cached
+
+	# LaTeX diff (in cases wdf and wdc fail)
+	ldf = diff --ignore-all-space --color-words='[A-z0-9_]+|[^[:space:]]'
+	ldc = diff --ignore-all-space --color-words='[A-z0-9_]+|[^[:space:]]' --cached
 
 	# gitignore.io
 	# https://www.gitignore.io/docs
