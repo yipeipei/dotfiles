@@ -1,3 +1,7 @@
+# $ echo $LD_LIBRARY_PATH
+# /opt/hadoop/lib/native/:
+unset LD_LIBRARY_PATH
+
 [[ -d "/tmp/$USER" ]] || mkdir -p "/tmp/$USER"
 
 # Info
