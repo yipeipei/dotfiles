@@ -2,6 +2,7 @@ info:
 	@grep ^[a-z] Makefile | cut -d: -f1
 
 setup-bash:
+	./ln.sh "$(shell pwd)/bash/bash_profile.sh" "${HOME}/.bash_profile"
 	./ln.sh "$(shell pwd)/bash/bashrc.sh" "${HOME}/.bashrc"
 
 setup-ssh:
