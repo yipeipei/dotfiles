@@ -17,7 +17,7 @@ setup-git-extra:
 	curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh -o ~/.git-prompt.sh
 
 setup-autojump:
-	git clone git://github.com/joelthelion/autojump.git
+	git clone https://github.com/wting/autojump.git
 	cd autojump && ./install.py
 	rm -rf autojump
 
