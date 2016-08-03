@@ -13,5 +13,11 @@ if [[ "$1" =~ pem$ ]]; then
 else
     # User uploaded
     # SSH2 MD5 fingerprint of uploaded public key
-    openssl pkey -in "$1" -pubout -outform DER | openssl md5 -c
+    if [[ "$1" =~ pub$ ]]; then
+        # Provided public key
+        ssh-keygen -f "$1" -e -m PKCS8 | openssl pkey -pubin -pubout -outform DER | openssl md5 -c
+    else
+        # Provided private key
+        openssl pkey -in "$1" -pubout -outform DER | openssl md5 -c
+    fi
 fi
