@@ -2,13 +2,12 @@
 # /opt/hadoop/lib/native/:
 unset LD_LIBRARY_PATH
 
-[[ -d "/tmp/$USER" ]] || mkdir -p "/tmp/$USER"
-
 # Info
 quota -s
 
 # Protect new file outside home
 umask 0077
+[[ -d "/tmp/$USER" ]] || mkdir -p "/tmp/$USER"
 
 # Linuxbrew
 export PATH="$HOME/.linuxbrew/bin:$PATH"
