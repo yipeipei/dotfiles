@@ -26,3 +26,7 @@ setup-cygwin: setup-bash setup-ssh setup-git setup-git-extra setup-autojump
 	./ln.sh "$(shell cygpath ${USERPROFILE})/Google Drive" "${HOME}/Google Drive"
 	./ln.sh "$(shell cygpath ${USERPROFILE})/Music" "${HOME}/Music"
 	./ln.sh "$(shell cygpath ${USERPROFILE})/wd" "${HOME}/wd"
+
+setup-csr: setup-bash setup-git setup-git-extra setup-autojump
+	./ln.sh "$(shell pwd)/csr/ssh" "${HOME}/.ssh"
+	
