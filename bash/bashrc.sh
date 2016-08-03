@@ -46,11 +46,11 @@ export HISTFILESIZE=1000000
 
 # Cygwin
 # e.g. CYGWIN_NT-6.1
-if [[ "$(uname)" =~ "CYGWIN" ]]; then
+if [[ "$(uname)" =~ CYGWIN ]]; then
     source "$DOTFILES/cygwin/bashrc_cygwin.sh"
 fi
 
 # CSR
-if [[ "$(hostname)" =~ "^csr" ]]; then
+if [[ "$(hostname)" =~ ^csr ]]; then
     source "$DOTFILES/csr/bashrc_csr.sh"
 fi
