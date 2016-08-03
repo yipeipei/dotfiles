@@ -29,8 +29,9 @@
 	wdc = diff --ignore-all-space --color-words --cached
 
 	# LaTeX diff (in cases wdf and wdc fail)
-	ldf = diff --ignore-all-space --color-words='[A-z0-9_]+|[^[:space:]]'
-	ldc = diff --ignore-all-space --color-words='[A-z0-9_]+|[^[:space:]]' --cached
+	# https://git-scm.com/docs/gitattributes#_customizing_word_diff
+	ldf = diff --ignore-all-space --color-words="\\\\[a-zA-Z]+|[{}]|\\\\.|[^\\{}[:space:]]+"
+	ldc = diff --ignore-all-space --color-words="\\\\[a-zA-Z]+|[{}]|\\\\.|[^\\{}[:space:]]+" --cached
 
 	# gitignore.io
 	# https://www.gitignore.io/docs
