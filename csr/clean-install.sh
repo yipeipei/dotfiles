@@ -40,6 +40,9 @@ brew install python3
 brew install boost --with-icu4c
 brew install boost-python
 brew install swig
+brew install libffi
+brew install libxml2
+brew install libxslt
 
 # dotfiles
 git clone https://github.com/yipeipei/dotfiles.git ~/wd/git/gh/dotfiles
