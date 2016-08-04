@@ -32,10 +32,14 @@ rm /tmp/bashrc_csr.sh
 # Linuxbrew
 git clone --depth 1 https://github.com/Linuxbrew/brew.git ~/.linuxbrew
 brew install gcc
+brew install gdb
+brew install make
+brew install cmake
 brew install git
 brew install python3
 brew install boost --with-icu4c
 brew install boost-python
+brew install swig
 
 # dotfiles
 git clone https://github.com/yipeipei/dotfiles.git ~/wd/git/gh/dotfiles
