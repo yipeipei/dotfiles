@@ -4,6 +4,9 @@ unset LD_LIBRARY_PATH
 
 # Info
 quota -s
+hadoop fs -count -q -h "$HOME"
+free -h
+df -h /tmp
 
 # Protect new file outside home
 umask 0077
