@@ -1,0 +1,1 @@
+powershell -ExecutionPolicy ByPass -File Watch-Mem.ps1
