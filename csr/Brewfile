@@ -16,7 +16,7 @@ brew 'gdbm'
 brew 'makedepend'
 brew 'openssl'
 brew 'python3'
-brew 'boost-python'
+brew 'boost-python', args: ['with-python3']
 brew 'libidn'
 brew 'curl'
 brew 'cmake'
