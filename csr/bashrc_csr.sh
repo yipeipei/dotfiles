@@ -14,7 +14,7 @@ function csrusage {
     echo tmp free:  $STATUS_TMP_FREE
 }
 echo
-csrusage
+csrusage &
 
 # Protect new file outside home
 umask 0077
