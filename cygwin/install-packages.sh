@@ -50,3 +50,5 @@ for package in "${common_tools[@]}" "${cpp_toolchain[@]}" "${dev_misc[@]}" "${li
 do
     apt-cyg install "${package}"
 done
+
+apt-cyg list > apt-cyg-list
