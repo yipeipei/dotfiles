@@ -10,3 +10,5 @@ pip3 install --upgrade you-get
 pip3 install --upgrade pythonpy
 pip3 install --upgrade scrapy
 pip3 install --upgrade flask
+
+pip3 freeze > requirements.txt
