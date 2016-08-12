@@ -29,8 +29,12 @@ cpp_toolchain=(
     "swig"
     )
 
+libboost=(
+    "libboost-devel"
+    "libboost_python3-devel"
+    )
+
 dev_misc=(
-    "cygwin-debuginfo"
     # Lektor
     "openssl-devel"
     "libffi-devel"
@@ -40,13 +44,7 @@ dev_misc=(
     "libxslt-devel"
     )
 
-libboost=(
-    "libboost-devel"
-    "boost-debuginfo"
-    "libboost_python3-devel"
-    )
-
-for package in "${common_tools[@]}" "${cpp_toolchain[@]}" "${dev_misc[@]}" "${libboost[@]}"
+for package in "${common_tools[@]}" "${cpp_toolchain[@]}" "${libboost[@]}" "${dev_misc[@]}"
 do
     apt-cyg install "${package}"
 done
