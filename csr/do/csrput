@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+# Put files into HDFS
+
+if [[ $# -eq 0 ]]; then
+    echo Usage: csrput FILES
+    exit
+fi
+
+for f in "$@"
+do
+    fpath="$(readlink -e "$f")"
+    if [[ "$fpath" =~ "$CSR_TEMP" ]]; then
+        echo csrput ${fpath/#$CSR_TEMP\/}
+        pv "$fpath" | hadoop fs -put - "${fpath/#$CSR_TEMP/$CSR_HDFS}"
+    else
+        echo csrput only works on files in $CSR_TEMP.
+    fi
+done
+
