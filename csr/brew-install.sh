@@ -12,5 +12,6 @@ brew install swig
 brew install libffi
 brew install libxml2
 brew install libxslt
+brew install pv
 
 brew bundle dump --force --global

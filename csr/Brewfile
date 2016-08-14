@@ -36,5 +36,6 @@ brew 'libffi'
 brew 'libxml2'
 brew 'libxslt'
 brew 'patchelf', args: ['with-static']
+brew 'pv'
 brew 'swig'
 brew 'homebrew/dupes/make'
