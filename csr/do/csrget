@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+# Get files from HDFS
+
+if [[ $# -eq 0 ]]; then
+    echo Usage: csrget FILES
+    exit
+fi
+
+for f in "$@"
+do
+    fpath="$(readlink -m "$f")"
+    fdir="$(dirname "$fpath")"
+    mkdir -p "$fdir"
+    if [[ "$fpath" =~ "$CSR_TEMP" ]]; then
+        hadoop fs -stat "%n" "${fpath/#$CSR_TEMP/$CSR_HDFS}" | while read fname
+        do
+            echo csrget ${fdir/#$CSR_TEMP\/}/$fname
+            hpath="${fdir/#$CSR_TEMP/$CSR_HDFS}/$fname"
+            hsize="$(hadoop fs -du "$hpath" | cut -d' ' -f1)"
+            hadoop fs -cat "$hpath" | pv -s $hsize > "${fdir}/${fname}"
+        done
+    else
+        echo csrget only works on files in $CSR_TEMP.
+    fi
+done
+
