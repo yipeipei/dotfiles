@@ -21,7 +21,12 @@ setup-autojump:
 	cd autojump && ./install.py
 	rm -rf autojump
 
-setup-cygwin: setup-bash setup-ssh setup-git setup-git-extra setup-autojump
+setup-fpp:
+	rm -rf ~/.PathPicker
+	git clone --depth 1 https://github.com/facebook/PathPicker.git ~/.PathPicker
+	./ln.sh ~/.PathPicker/fpp /usr/local/bin/fpp
+
+setup-cygwin: setup-bash setup-ssh setup-git setup-git-extra setup-autojump setup-fpp
 	./ln.sh "$(shell pwd)/cygwin/minttyrc.sh" "${HOME}/.minttyrc"
 	./ln.sh "$(shell cygpath ${USERPROFILE})/Dropbox" "${HOME}/Dropbox"
 	./ln.sh "$(shell cygpath ${USERPROFILE})/Google Drive" "${HOME}/Google Drive"
