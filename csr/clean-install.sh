@@ -15,17 +15,18 @@ fi
 
 
 echo Proceed.
+source bashrc_csr.sh  # for $CSR_BASE
 
 # Clean home
-ssh csr48 << EOF
+ssh "$CSR_BASE" << EOF
 rm -rf *
 rm -rf .*
 EOF
 
 # Install essentials
-scp bashrc_csr.sh csr48:/tmp
+scp bashrc_csr.sh "$CSR_BASE:/tmp"  # for base settings
 
-ssh csr48 << EOF
+ssh "$CSR_BASE" << EOF
 source /tmp/bashrc_csr.sh
 rm /tmp/bashrc_csr.sh
 

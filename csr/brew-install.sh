@@ -1,5 +1,12 @@
 #!/usr/bin/env bash
 
+source bashrc_csr.sh
+
+if [[ "$(hostname)" != "$CSR_BASE" ]]; then
+    echo Invoke on $CSR_BASE for compatibility.
+    exit
+fi
+
 brew install gcc
 brew install gdb
 brew install make

@@ -8,6 +8,7 @@ export PATH="$DOTFILES/csr/do:$PATH"
 export CSR_HOME="$HOME"
 export CSR_HDFS="$HOME"
 export CSR_TEMP="/tmp/$USER"
+export CSR_BASE="csr48"
 
 # Protect new file outside home
 umask 0077
