@@ -33,7 +33,7 @@ setup-cygwin: setup-bash setup-ssh setup-git setup-git-extra setup-autojump setu
 	./ln.sh "$(shell cygpath ${USERPROFILE})/Music" "${HOME}/Music"
 	./ln.sh "$(shell cygpath ${USERPROFILE})/wd" "${HOME}/wd"
 
-setup-csr: setup-bash setup-git setup-git-extra setup-autojump
+setup-csr: setup-bash setup-git setup-git-extra
 	./ln.sh "$(shell pwd)/csr/ssh" "${HOME}/.ssh"
 	./ln.sh "$(shell pwd)/csr/Brewfile" "${HOME}/.Brewfile"
 
