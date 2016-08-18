@@ -20,5 +20,8 @@ brew install libffi
 brew install libxml2
 brew install libxslt
 brew install pv
+brew install autojump
+brew install fpp
+brew install fzf
 
 brew bundle dump --force --global
