@@ -19,6 +19,9 @@ common_tools=(
     "graphviz"
     "ghostscript"
     "chere"
+    "fzf"
+    "fzf-bash-completion"
+    "fzf-bash"
     )
 
 cpp_toolchain=(

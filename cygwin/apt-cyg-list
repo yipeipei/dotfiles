@@ -7,6 +7,7 @@ aspell-en
 base-cygwin
 base-files
 bash
+bash-completion
 binutils
 bzip2
 ca-certificates
@@ -28,6 +29,9 @@ editrights
 emacs
 file
 findutils
+fzf
+fzf-bash
+fzf-bash-completion
 gamin
 gawk
 gcc-core
@@ -239,6 +243,7 @@ libxml2
 libxml2-devel
 libxslt
 libxslt-devel
+libyaml0_2
 libzip2
 login
 lua
@@ -264,6 +269,13 @@ python
 python3
 rebase
 rsync
+ruby
+ruby-curses
+ruby-json
+ruby-minitest4
+ruby-rake
+ruby-rdoc
+rubygems
 run
 sed
 shared-mime-info
