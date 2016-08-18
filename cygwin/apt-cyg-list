@@ -10,6 +10,7 @@ bash
 binutils
 bzip2
 ca-certificates
+chere
 cmake
 coreutils
 csih

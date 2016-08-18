@@ -18,6 +18,7 @@ common_tools=(
     "gnuplot"
     "graphviz"
     "ghostscript"
+    "chere"
     )
 
 cpp_toolchain=(
