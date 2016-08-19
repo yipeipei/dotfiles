@@ -22,6 +22,7 @@ common_tools=(
     "fzf"
     "fzf-bash-completion"
     "fzf-bash"
+    "the_silver_searcher"
     )
 
 cpp_toolchain=(

@@ -283,6 +283,7 @@ swig
 tar
 terminfo
 terminfo-extra
+the_silver_searcher
 tmux
 tzdata
 util-linux
