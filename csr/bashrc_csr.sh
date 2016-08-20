@@ -26,9 +26,5 @@ export HOMEBREW_FORCE_VENDOR_RUBY=true
 export HOMEBREW_NO_ANALYTICS=true
 export CMAKE_PREFIX_PATH="$HOME/.linuxbrew"
 
-# Autojump
-[[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && source $(brew --prefix)/etc/profile.d/autojump.sh
-
-# fzf
-source "$HOME/.linuxbrew/opt/fzf/shell/completion.bash" 2> /dev/null
-source "$HOME/.linuxbrew/opt/fzf/shell/key-bindings.bash"
+# Brew prefixed
+[[ -f "$DOTFILES/csr/bashrc_brew.sh" ]] && source "$DOTFILES/csr/bashrc_brew.sh"
