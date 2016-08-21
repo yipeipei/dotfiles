@@ -35,7 +35,7 @@ GREEN="\[$(tput setaf 2)\]"
 YELLOW="\[$(tput setaf 3)\]"
 BLUE="\[$(tput setaf 4)\]"
 
-PS1="\[\e]0;\w\a\]\n\[\e[32m\]\u@\h \[\e[33m\]\w$GREEN\$(__git_ps1) $YELLOW\$?\[\e[0m\]\n\$ "
+PS1="\[\e]0;\u@\h \w\a\]\n\[\e[32m\]\u@\h \[\e[33m\]\w$GREEN\$(__git_ps1) $YELLOW\$?\[\e[0m\]\n\$ "
 
 # History
 export HISTSIZE=1000000
