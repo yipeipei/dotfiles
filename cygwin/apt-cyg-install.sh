@@ -12,6 +12,7 @@ common_tools=(
     "git"
     "tmux"
     "emacs"
+    "emacs-w32"
     "aspell"
     "aspell-en"
     "gnupg"

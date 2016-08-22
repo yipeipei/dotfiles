@@ -26,6 +26,9 @@ setup-fpp:
 	git clone --depth 1 https://github.com/facebook/PathPicker.git ~/.PathPicker
 	./ln.sh ~/.PathPicker/fpp /usr/local/bin/fpp
 
+setup-prelude:
+	git clone --depth 1 https://github.com/bbatsov/prelude.git ~/.emacs.d
+
 setup-cygwin: setup-bash setup-ssh setup-git setup-git-extra setup-autojump setup-fpp
 	./ln.sh "$(shell pwd)/cygwin/minttyrc.sh" "${HOME}/.minttyrc"
 	./ln.sh "$(shell cygpath ${USERPROFILE})/Dropbox" "${HOME}/Dropbox"
