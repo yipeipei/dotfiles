@@ -4,6 +4,8 @@ info:
 setup-bash:
 	./ln.sh "$(shell pwd)/bash/bash_profile.sh" "${HOME}/.bash_profile"
 	./ln.sh "$(shell pwd)/bash/bashrc.sh" "${HOME}/.bashrc"
+	./ln.sh "$(shell pwd)/bash/inputrc.sh" "${HOME}/.inputrc"
+	./ln.sh "$(shell pwd)/bash/profile.sh" "${HOME}/.profile"
 
 setup-ssh:
 	./ln.sh "$(shell pwd)/ssh/keys" "${HOME}/.ssh"
