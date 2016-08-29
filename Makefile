@@ -4,6 +4,8 @@ info:
 setup-bash:
 	./ln.sh "$(shell pwd)/bash/bash_profile.sh" "${HOME}/.bash_profile"
 	./ln.sh "$(shell pwd)/bash/bashrc.sh" "${HOME}/.bashrc"
+	./ln.sh "$(shell pwd)/bash/inputrc.sh" "${HOME}/.inputrc"
+	./ln.sh "$(shell pwd)/bash/profile.sh" "${HOME}/.profile"
 
 setup-ssh:
 	./ln.sh "$(shell pwd)/ssh/keys" "${HOME}/.ssh"
@@ -25,6 +27,9 @@ setup-fpp:
 	rm -rf ~/.PathPicker
 	git clone --depth 1 https://github.com/facebook/PathPicker.git ~/.PathPicker
 	./ln.sh ~/.PathPicker/fpp /usr/local/bin/fpp
+
+setup-prelude:
+	git clone --depth 1 https://github.com/bbatsov/prelude.git ~/.emacs.d
 
 setup-cygwin: setup-bash setup-ssh setup-git setup-git-extra setup-autojump setup-fpp
 	./ln.sh "$(shell pwd)/cygwin/minttyrc.sh" "${HOME}/.minttyrc"

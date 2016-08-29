@@ -27,6 +27,7 @@ diffutils
 dri-drivers
 editrights
 emacs
+emacs-w32
 file
 findutils
 fzf
@@ -78,6 +79,7 @@ libXft2
 libXi6
 libXinerama1
 libXmu6
+libXpm-noX_4
 libXpm4
 libXrandr2
 libXrender1
