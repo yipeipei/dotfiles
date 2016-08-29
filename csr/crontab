@@ -1,0 +1,3 @@
+HOME="/home/comp/csppyi"
+
+0 3 * * * "$HOME/.crontab-daily" > "$HOME/.crontab-daily-log" 2>&1
