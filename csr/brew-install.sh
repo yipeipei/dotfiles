@@ -25,5 +25,7 @@ brew install fpp
 brew install fzf
 brew install the_silver_searcher
 brew install ruby
+brew install emacs --without-librsvg
+brew install aspell --with-lang-en
 
 brew bundle dump --force --global

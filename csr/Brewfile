@@ -4,13 +4,14 @@ tap 'homebrew/bundle'
 tap 'homebrew/services'
 tap 'caskroom/cask'
 brew 'xz'
+brew 'gpatch'
+brew 'aspell', args: ['with-lang-en']
 brew 'homebrew/dupes/m4'
 brew 'autoconf'
 brew 'autojump'
 brew 'automake'
 brew 'zlib'
 brew 'binutils'
-brew 'gpatch'
 brew 'icu4c'
 brew 'bzip2'
 brew 'boost', args: ['with-icu4c']
@@ -26,6 +27,7 @@ brew 'boost-python', args: ['with-python3']
 brew 'libidn'
 brew 'curl'
 brew 'cmake'
+brew 'emacs', args: ['without-librsvg']
 brew 'expat'
 brew 'python'
 brew 'fpp'
