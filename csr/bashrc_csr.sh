@@ -26,5 +26,9 @@ export HOMEBREW_FORCE_VENDOR_RUBY=true
 export HOMEBREW_NO_ANALYTICS=true
 export CMAKE_PREFIX_PATH="$HOME/.linuxbrew"
 
+##############################################################################
+# If not running interactively, don't do anything
+[[ "$-" != *i* ]] && return
+
 # Brew prefixed
 [[ -f "$DOTFILES/csr/bashrc_brew.sh" ]] && source "$DOTFILES/csr/bashrc_brew.sh"

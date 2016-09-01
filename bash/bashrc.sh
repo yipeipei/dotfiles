@@ -1,9 +1,3 @@
-# If not running interactively, don't do anything
-[[ "$-" != *i* ]] && return
-
-# Info
-ls -l $SHELL
-
 # Base directory
 export DOTFILES_BASH="$(dirname "$(readlink $HOME/.bashrc)")"
 export DOTFILES="$(dirname "${DOTFILES_BASH}")"
@@ -11,6 +5,24 @@ export DOTFILES="$(dirname "${DOTFILES_BASH}")"
 # PATH
 export PATH="$DOTFILES/bash/do:$PATH"
 export PATH="$DOTFILES/python/do:$PATH"
+
+# Cygwin
+# e.g. CYGWIN_NT-6.1
+if [[ "$(uname)" =~ CYGWIN ]]; then
+    source "$DOTFILES/cygwin/bashrc_cygwin.sh"
+fi
+
+# CSR
+if [[ "$(hostname)" =~ ^csr ]]; then
+    source "$DOTFILES/csr/bashrc_csr.sh"
+fi
+
+##############################################################################
+# If not running interactively, don't do anything
+[[ "$-" != *i* ]] && return
+
+# Info
+ls -l $SHELL
 
 # SSH
 source "$DOTFILES/ssh/auto-launch-ssh-agent.sh"
@@ -40,14 +52,3 @@ PS1="\[\e]0;\u@\h \w\a\]\n\[\e[32m\]\u@\h \[\e[33m\]\w$GREEN\$(__git_ps1) $YELLO
 # History
 export HISTSIZE=1000000
 export HISTFILESIZE=1000000
-
-# Cygwin
-# e.g. CYGWIN_NT-6.1
-if [[ "$(uname)" =~ CYGWIN ]]; then
-    source "$DOTFILES/cygwin/bashrc_cygwin.sh"
-fi
-
-# CSR
-if [[ "$(hostname)" =~ ^csr ]]; then
-    source "$DOTFILES/csr/bashrc_csr.sh"
-fi
