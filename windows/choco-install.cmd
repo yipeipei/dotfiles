@@ -1,2 +1,3 @@
-choco list --local-only > choco-list
+choco upgrade -y sumatrapdf
+
 pause
