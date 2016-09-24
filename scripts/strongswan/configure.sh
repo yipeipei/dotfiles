@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -o xtrace
+
 # Server info
 DOMAIN="one.yipeipei.com"
 PUBLIC_IP=$(curl ipv4.icanhazip.com)

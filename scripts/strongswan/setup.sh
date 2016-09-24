@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 # Setup IPsec VPN with strongSwan
 
+set -o xtrace
+
 source ./configure.sh
 
 # Install packages

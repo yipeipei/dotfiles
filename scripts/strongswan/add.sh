@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -o xtrace
+
 source ./configure.sh
 
 if [[ $# -ne 2 ]]; then
