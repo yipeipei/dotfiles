@@ -20,4 +20,4 @@ openssl x509 -inform DER -in ipsec.d/certs/${NAME}Cert.der -out ipsec.d/certs/${
 openssl x509 -inform DER -in ipsec.d/cacerts/${OUTPUT_ROOT}Cert.der -out ipsec.d/cacerts/${OUTPUT_ROOT}Cert.pem -outform PEM
 chmod 600 ipsec.d/private/${NAME}Key.pem
 
-openssl pkcs12 -export  -inkey ipsec.d/private/${NAME}Key.pem -in ipsec.d/certs/${NAME}Cert.pem -name "${NAME}'s VPN Certificate"  -certfile ipsec.d/cacerts/${OUTPUT_ROOT}Cert.pem -caname "${DN_CN_ROOT}" -out ${NAME}.p12
+openssl pkcs12 -export -inkey ipsec.d/private/${NAME}Key.pem -in ipsec.d/certs/${NAME}Cert.pem -name "${NAME}'s VPN Certificate" -certfile ipsec.d/cacerts/${OUTPUT_ROOT}Cert.pem -caname "${DN_CN_ROOT}" -out ${NAME}.p12

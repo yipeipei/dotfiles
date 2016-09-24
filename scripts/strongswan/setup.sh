@@ -1,8 +1,6 @@
 #!/usr/bin/env bash
 # Setup IPsec VPN with strongSwan
 
-# https://raymii.org/s/tutorials/IPSEC_vpn_with_CentOS_7.html
-
 source ./configure.sh
 
 # Install packages
@@ -24,9 +22,9 @@ strongswan pki --gen --type rsa --size 4096 --outform der > ipsec.d/private/${OU
 chmod 600 ipsec.d/private/${OUTPUT_ROOT}Key.der
 strongswan pki --self --ca --lifetime 3650 --in ipsec.d/private/${OUTPUT_ROOT}Key.der --type rsa --dn "C=${DN_C}, O=${DN_O}, CN=${DN_CN_ROOT}" --outform der > ipsec.d/cacerts/${OUTPUT_ROOT}Cert.der
 
-strongswan pki --gen --type rsa --size 2048 --outform der > ipsec.d/private/${OUTPUT_HOST}Key.der
+strongswan pki --gen --type rsa --size 4096 --outform der > ipsec.d/private/${OUTPUT_HOST}Key.der
 chmod 600 ipsec.d/private/${OUTPUT_HOST}Key.der
-strongswan pki --pub --in ipsec.d/private/${OUTPUT_HOST}Key.der --type rsa | strongswan pki --issue --lifetime 730 --cacert ipsec.d/cacerts/${OUTPUT_ROOT}Cert.der --cakey ipsec.d/private/${OUTPUT_ROOT}Key.der --dn "C=${DN_C}, O=${DN_O}, CN=${DN_CN_HOST}" --san $DOMAIN --san $PUBLIC_IP  --san @$PUBLIC_IP --flag serverAuth --flag ikeIntermediate --outform der > ipsec.d/certs/${OUTPUT_HOST}Cert.der
+strongswan pki --pub --in ipsec.d/private/${OUTPUT_HOST}Key.der --type rsa | strongswan pki --issue --lifetime 730 --cacert ipsec.d/cacerts/${OUTPUT_ROOT}Cert.der --cakey ipsec.d/private/${OUTPUT_ROOT}Key.der --dn "C=${DN_C}, O=${DN_O}, CN=${DN_CN_HOST}" --san ${DOMAIN} --san ${PUBLIC_IP} --san @${PUBLIC_IP} --flag serverAuth --flag ikeIntermediate --outform der > ipsec.d/certs/${OUTPUT_HOST}Cert.der
 
 # Configure IPSEC
 
@@ -38,34 +36,22 @@ config setup
 
 conn %default
     keyexchange=ikev2
-    ike=aes128-sha256-ecp256,aes256-sha384-ecp384,aes128-sha256-modp2048,aes128-sha1-modp2048,aes256-sha384-modp4096,aes256-sha256-modp4096,aes256-sha1-modp4096,aes128-sha256-modp1536,aes128-sha1-modp1536,aes256-sha384-modp2048,aes256-sha256-modp2048,aes256-sha1-modp2048,aes128-sha256-modp1024,aes128-sha1-modp1024,aes256-sha384-modp1536,aes256-sha256-modp1536,aes256-sha1-modp1536,aes256-sha384-modp1024,aes256-sha256-modp1024,aes256-sha1-modp1024!
-    esp=aes128gcm16-ecp256,aes256gcm16-ecp384,aes128-sha256-ecp256,aes256-sha384-ecp384,aes128-sha256-modp2048,aes128-sha1-modp2048,aes256-sha384-modp4096,aes256-sha256-modp4096,aes256-sha1-modp4096,aes128-sha256-modp1536,aes128-sha1-modp1536,aes256-sha384-modp2048,aes256-sha256-modp2048,aes256-sha1-modp2048,aes128-sha256-modp1024,aes128-sha1-modp1024,aes256-sha384-modp1536,aes256-sha256-modp1536,aes256-sha1-modp1536,aes256-sha384-modp1024,aes256-sha256-modp1024,aes256-sha1-modp1024,aes128gcm16,aes256gcm16,aes128-sha256,aes128-sha1,aes256-sha384,aes256-sha256,aes256-sha1!
+    ike=aes128-sha1-modp1024,aes128-sha1-modp1536,aes128-sha1-modp2048,aes128-sha256-ecp256,aes128-sha256-modp1024,aes128-sha256-modp1536,aes128-sha256-modp2048,aes256-aes128-sha256-sha1-modp2048-modp4096-modp1024,aes256-sha1-modp1024,aes256-sha256-modp1024,aes256-sha256-modp1536,aes256-sha256-modp2048,aes256-sha256-modp4096,aes256-sha384-ecp384,aes256-sha384-modp1024,aes256-sha384-modp1536,aes256-sha384-modp2048,aes256-sha384-modp4096,aes256gcm16-aes256gcm12-aes128gcm16-aes128gcm12-sha256-sha1-modp2048-modp4096-modp1024,3des-sha1-modp1024!
+    esp=aes128-aes256-sha1-sha256-modp2048-modp4096-modp1024,aes128-sha1,aes128-sha1-modp1024,aes128-sha1-modp1536,aes128-sha1-modp2048,aes128-sha256,aes128-sha256-ecp256,aes128-sha256-modp1024,aes128-sha256-modp1536,aes128-sha256-modp2048,aes128gcm12-aes128gcm16-aes256gcm12-aes256gcm16-modp2048-modp4096-modp1024,aes128gcm16,aes128gcm16-ecp256,aes256-sha1,aes256-sha256,aes256-sha256-modp1024,aes256-sha256-modp1536,aes256-sha256-modp2048,aes256-sha256-modp4096,aes256-sha384,aes256-sha384-ecp384,aes256-sha384-modp1024,aes256-sha384-modp1536,aes256-sha384-modp2048,aes256-sha384-modp4096,aes256gcm16,aes256gcm16-ecp384,3des-sha1!
     dpdaction=clear
     dpddelay=300s
-    rekey=no
+    authby=pubkey
     left=%any
+    leftid=${DN_CN_HOST}
     leftsubnet=0.0.0.0/0
     leftcert=${OUTPUT_HOST}Cert.der
+    leftsendcert=always
     right=%any
-    rightdns=8.8.8.8,8.8.4.4
-    rightsourceip=10.42.42.0/24
+    rightsourceip=10.42.42.0/24,2002:25f7:7489:3::/112
+    rightdns=8.8.8.8,2001:4860:4860::8888
 
 conn IPSec-IKEv2
     keyexchange=ikev2
-    auto=add
-
-conn IPSec-IKEv2-EAP
-    also="IPSec-IKEv2"
-    rightauth=eap-mschapv2
-    rightauth2=pubkey
-    rightsendcert=never
-    eap_identity=%any
-
-conn CiscoIPSec
-    keyexchange=ikev1
-    forceencaps=yes
-    authby=xauthrsasig
-    xauth=server
     auto=add
 EOF
 chmod 600 /etc/strongswan/ipsec.conf

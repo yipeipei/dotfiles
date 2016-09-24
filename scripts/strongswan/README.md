@@ -31,6 +31,12 @@ The VPN server supports three types of VPN services:
 
 Send `NAME.p12` and its export paraphrase to the client. Additionally, send `/etc/strongswan/ipsec.d/cacerts/${OUTPUT_ROOT}Cert.pem` if for iOS.
 
+## Revoke client certificate
+
+```bash
+./revoke.sh NAME
+```
+
 ## Add user account
 
 ```
@@ -78,6 +84,13 @@ Clients
 
 ```bash
 strongswan status
+strongswan statusall
+```
+
+### List host certs
+
+```bash
+strongswan listcerts
 ```
 
 ### Restart VPN server
@@ -89,7 +102,7 @@ strongswan restart
 ### View certificate properties
 
 ```bash
-strongswan  pki --print --in /etc/strongswan/ipsec.d/cacerts/${OUTPUT_ROOT}Cert.der
+strongswan pki --print --in /etc/strongswan/ipsec.d/cacerts/${OUTPUT_ROOT}Cert.der
 # or
-openssl x509 -inform DER -in /etc/strongswan/ipsec.d/certs/${OUTPUT_ROOT}Cert.der -noout -text
+openssl x509 -inform DER -in /etc/strongswan/ipsec.d/certs/${OUTPUT_HOST}Cert.der -noout -text
 ```
