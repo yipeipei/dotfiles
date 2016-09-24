@@ -4,6 +4,7 @@ set -o xtrace
 
 # Server info
 DOMAIN="one.yipeipei.com"
+LOGIN_USER="ec2-user"
 PUBLIC_IP=$(curl ipv4.icanhazip.com)
 
 # Distinguished name

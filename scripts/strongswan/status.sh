@@ -4,7 +4,7 @@ set -o xtrace
 
 source ./configure.sh
 
-ssh -tt ec2-user@$DOMAIN << EOF
+ssh -tt $LOGIN_USER@$DOMAIN << EOF
 ls
 
 sudo su << EOD
