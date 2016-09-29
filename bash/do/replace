@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# Replace in-place
+# https://robots.thoughtbot.com/sed-102-replace-in-place
+
+find_this="$1"
+shift
+replace_with="$1"
+shift
+
+items=$(ag -l --nocolor "$find_this" "$@")
+temp="${TMPDIR:-/tmp}/replace_temp_file.$$"
+IFS=$'\n'
+for item in $items; do
+  sed "s/$find_this/$replace_with/g" "$item" > "$temp" && mv "$temp" "$item"
+done
