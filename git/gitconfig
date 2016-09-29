@@ -65,6 +65,9 @@
 	# https://git-scm.com/book/en/v2/Git-Basics-Git-Aliases
 	unstage = reset HEAD --
 	last = log -1 HEAD
+	fm = config core.fileMode
+	fmt = "!f() { git -c core.fileMode=true $*; }; f"
+	fmf = "!f() { git -c core.fileMode=false $*; }; f"
 [user]
 	name = YI Peipei
 	email = yipeipei@gmail.com
