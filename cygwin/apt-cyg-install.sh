@@ -24,6 +24,7 @@ common_tools=(
     "fzf-bash-completion"
     "fzf-bash"
     "the_silver_searcher"
+    "aria2"
     )
 
 cpp_toolchain=(
