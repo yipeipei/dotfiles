@@ -25,6 +25,7 @@ common_tools=(
     "fzf-bash"
     "the_silver_searcher"
     "aria2"
+    "xinit"
     )
 
 cpp_toolchain=(
