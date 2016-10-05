@@ -31,6 +31,9 @@ setup-fpp:
 setup-prelude:
 	git clone --depth 1 https://github.com/bbatsov/prelude.git ~/.emacs.d
 
+setup-aria2:
+	./ln.sh "$(shell pwd)/aria2" "${HOME}/.aria2"
+
 setup-cygwin: setup-bash setup-ssh setup-git setup-git-extra setup-autojump setup-fpp
 	./ln.sh "$(shell pwd)/cygwin/minttyrc.sh" "${HOME}/.minttyrc"
 	./ln.sh "$(shell cygpath ${USERPROFILE})/Dropbox" "${HOME}/Dropbox"
