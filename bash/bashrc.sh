@@ -52,6 +52,3 @@ PS1="\[\e]0;\u@\h:\w\a\]\n$GREEN\u@\h$YELLOW:\w$GREEN\$(__git_ps1) $YELLOW\$?\[\
 # History
 export HISTSIZE=1000000
 export HISTFILESIZE=1000000
-
-# X clients
-export DISPLAY=:0.0

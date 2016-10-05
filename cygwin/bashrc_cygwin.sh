@@ -7,6 +7,9 @@ alias pbpaste="cat /dev/clipboard"
 # If not running interactively, don't do anything
 [[ "$-" != *i* ]] && return
 
+# X clients
+export DISPLAY=:0.0
+
 # Emacs
 alias edm="emacs-w32 --daemon"
 alias ect="emacsclient-w32 -t"
