@@ -319,6 +319,7 @@ windows-default-manifest
 xauth
 xcursor-themes
 xdg-user-dirs
+xeyes
 xf86-video-dummy
 xf86-video-nested
 xinit

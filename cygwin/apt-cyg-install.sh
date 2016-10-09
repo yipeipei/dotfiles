@@ -26,6 +26,7 @@ common_tools=(
     "the_silver_searcher"
     "aria2"
     "xinit"
+    "xeyes"
     )
 
 cpp_toolchain=(
