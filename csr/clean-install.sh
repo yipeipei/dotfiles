@@ -19,19 +19,19 @@ source bashrc_csr.sh  # for $CSR_BASE
 
 # Clean home
 ssh "$CSR_BASE" << EOF
-rm -rf *
-rm -rf .*
+# rm -rf *
+# rm -rf .*
 EOF
 
 # Install essentials
 scp bashrc_csr.sh "$CSR_BASE:/tmp"  # for base settings
 
-ssh "$CSR_BASE" << EOF
+ssh "$CSR_BASE" << "EOF"
 source /tmp/bashrc_csr.sh
 rm /tmp/bashrc_csr.sh
 
 # Linuxbrew
-git clone --depth 1 https://github.com/Linuxbrew/brew.git ~/.linuxbrew
+git clone --depth 1 https://github.com/Linuxbrew/brew.git "$HOMEBREW_PREFIX"
 brew install gcc
 brew install git
 brew install python3

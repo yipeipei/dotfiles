@@ -12,19 +12,20 @@ export CSR_BASE="csr48"
 
 # Protect new file outside home
 umask 0077
-[[ -d "/tmp/$USER" ]] || mkdir -p "/tmp/$USER"
+[[ -d "$CSR_TEMP" ]] || mkdir -p "$CSR_TEMP"
 
 # Linuxbrew
-export PATH="$HOME/.linuxbrew/bin:$PATH"
-export MANPATH="$HOME/.linuxbrew/share/man:$MANPATH"
-export INFOPATH="$HOME/.linuxbrew/share/info:$INFOPATH"
+export HOMEBREW_PREFIX="$CSR_TEMP/.linuxbrew"
+export PATH="$HOMEBREW_PREFIX/bin:$PATH"
+export MANPATH="$HOMEBREW_PREFIX/share/man:$MANPATH"
+export INFOPATH="$HOMEBREW_PREFIX/share/info:$INFOPATH"
 
 # Linuxbrew extra
-export HOMEBREW_CACHE="/tmp/$USER/Caches/Homebrew"
-export HOMEBREW_LOGS="/tmp/$USER/Logs/Homebrew"
+export HOMEBREW_CACHE="$CSR_TEMP/Caches/Homebrew"
+export HOMEBREW_LOGS="$CSR_TEMP/Logs/Homebrew"
 export HOMEBREW_FORCE_VENDOR_RUBY=true
 export HOMEBREW_NO_ANALYTICS=true
-export CMAKE_PREFIX_PATH="$HOME/.linuxbrew"
+export CMAKE_PREFIX_PATH="$HOMEBREW_PREFIX"
 
 ##############################################################################
 # If not running interactively, don't do anything
