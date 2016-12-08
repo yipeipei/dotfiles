@@ -13,3 +13,9 @@ Host cs*
     User csppyi
     HostName %h.comp.hkbu.edu.hk
     ForwardAgent yes
+
+# bchoi-server: VM with CentOS 6.8, 32GB RAM, 180GB disk
+Host demo
+    User csppyi
+    HostName 158.182.9.143
+    ForwardAgent yes
