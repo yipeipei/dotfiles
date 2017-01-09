@@ -2,7 +2,8 @@
 import sys
 import pprint
 
-
+# https://twitter.com/nedbat/status/817827164443840512
+# https://gist.github.com/chekunkov/848c3472d4b0bee69bccd2e77907a590
 def displayhook_pprint(o):
     """Display hook powered by pprint.
 
