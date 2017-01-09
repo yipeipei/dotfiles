@@ -3,6 +3,8 @@ import sys
 import os
 import pprint
 
+
+# pprint as display hook
 # https://twitter.com/nedbat/status/817827164443840512
 # https://gist.github.com/chekunkov/848c3472d4b0bee69bccd2e77907a590
 def displayhook_pprint(o):
@@ -26,6 +28,7 @@ def displayhook_pprint(o):
 sys.displayhook = displayhook_pprint
 
 
+# read start-up file from current directory
 # https://docs.python.org/3/tutorial/appendix.html#the-interactive-startup-file
 if os.path.isfile('.pythonrc.py'):
     exec(open('.pythonrc.py').read())
