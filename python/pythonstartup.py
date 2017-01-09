@@ -17,7 +17,7 @@ def displayhook_pprint(o):
         return
     if sys.version_info[0] == 3:
         import builtins
-    else:
+    elif sys.version_info[0] == 2:
         import __builtin__ as builtins
     # Set '_' to None to avoid recursion
     # https://docs.python.org/3/library/sys.html#sys.displayhook
