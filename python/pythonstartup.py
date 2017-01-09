@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 import sys
+import os
 import pprint
 
 # https://twitter.com/nedbat/status/817827164443840512
@@ -23,3 +24,8 @@ def displayhook_pprint(o):
     builtins._ = o
 
 sys.displayhook = displayhook_pprint
+
+
+# https://docs.python.org/3/tutorial/appendix.html#the-interactive-startup-file
+if os.path.isfile('.pythonrc.py'):
+    exec(open('.pythonrc.py').read())
