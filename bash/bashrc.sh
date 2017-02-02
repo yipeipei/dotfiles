@@ -55,3 +55,6 @@ export HISTFILESIZE=1000000
 
 # Display
 env | grep DISPLAY
+
+# Python
+export PYTHONSTARTUP="$DOTFILES/python/pythonstartup.py"
