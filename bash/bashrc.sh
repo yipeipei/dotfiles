@@ -13,7 +13,7 @@ if [[ "$(uname)" =~ CYGWIN ]]; then
 fi
 
 # CSR
-if [[ "$(hostname)" =~ ^csr ]]; then
+if [[ "$(hostname)" =~ ^csr || "$(hostname)" =~ ^gpu ]] ; then
     source "$DOTFILES/csr/bashrc_csr.sh"
 fi
 
