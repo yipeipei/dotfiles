@@ -8,7 +8,7 @@ setup-bash:
 	./ln.sh "$(shell pwd)/bash/profile.sh" "${HOME}/.profile"
 
 setup-ssh:
-	./ln.sh "$(shell pwd)/ssh/keys" "${HOME}/.ssh"
+	./ln.sh "$(shell pwd)/ssh/config" "${HOME}/.ssh/config"
 
 setup-git:
 	./ln.sh "$(shell pwd)/git/gitconfig" "${HOME}/.gitconfig"
@@ -42,7 +42,7 @@ setup-cygwin: setup-bash setup-ssh setup-git setup-git-extra setup-autojump setu
 	./ln.sh "$(shell cygpath ${USERPROFILE})/wd" "${HOME}/wd"
 
 setup-csr: setup-bash setup-git setup-git-extra
-	./ln.sh "$(shell pwd)/csr/ssh" "${HOME}/.ssh"
+	./ln.sh "$(shell pwd)/csr/ssh/config" "${HOME}/.ssh/config"
 	./ln.sh "$(shell pwd)/csr/Brewfile" "${HOME}/.Brewfile"
 	./ln.sh "$(shell pwd)/csr/crontab-daily.sh" "${HOME}/.crontab-daily"
 
