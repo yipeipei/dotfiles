@@ -46,3 +46,4 @@ setup-csr: setup-bash setup-git setup-git-extra
 	./ln.sh "$(shell pwd)/csr/Brewfile" "${HOME}/.Brewfile"
 	./ln.sh "$(shell pwd)/csr/crontab-daily.sh" "${HOME}/.crontab-daily"
 
+setup-osx: setup-bash setup-ssh setup-git setup-git-extra
