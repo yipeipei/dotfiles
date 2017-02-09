@@ -17,6 +17,8 @@ if [[ "$(hostname)" =~ ^csr || "$(hostname)" =~ ^gpu ]] ; then
     source "$DOTFILES/csr/bashrc_csr.sh"
 fi
 
+export HOMEBREW_NO_ANALYTICS=true
+
 ##############################################################################
 # If not running interactively, don't do anything
 [[ "$-" != *i* ]] && return
