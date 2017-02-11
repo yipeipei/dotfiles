@@ -6,6 +6,11 @@ export DOTFILES="$(dirname "${DOTFILES_BASH}")"
 export PATH="$DOTFILES/bash/do:$PATH"
 export PATH="$DOTFILES/python/do:$PATH"
 
+# macOS
+if [[ "$(uname)" == Darwin ]]; then
+    source "$DOTFILES/macos/bashrc_macos.sh"
+fi
+
 # Cygwin
 # e.g. CYGWIN_NT-6.1
 if [[ "$(uname)" =~ CYGWIN ]]; then
@@ -16,8 +21,6 @@ fi
 if [[ "$(hostname)" =~ ^csr || "$(hostname)" =~ ^gpu ]] ; then
     source "$DOTFILES/csr/bashrc_csr.sh"
 fi
-
-export HOMEBREW_NO_ANALYTICS=true
 
 ##############################################################################
 # If not running interactively, don't do anything
