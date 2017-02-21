@@ -63,3 +63,4 @@ env | grep DISPLAY
 
 # Python
 export PYTHONSTARTUP="$DOTFILES/python/pythonstartup.py"
+echo python3: "$(python3 --version)"
