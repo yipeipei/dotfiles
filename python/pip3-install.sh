@@ -16,5 +16,6 @@ pip3 install --upgrade requests
 pip3 install --upgrade numpy
 pip3 install --upgrade networkx
 pip3 install --upgrade pandas
+pip3 install --upgrade jupyter
 
 pip3 freeze > requirements.txt
