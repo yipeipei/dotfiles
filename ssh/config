@@ -9,7 +9,7 @@ Host faith
     HostName faith.comp.hkbu.edu.hk
     ForwardAgent yes
 
-Host cs*
+Host cs* gpu*
     User csppyi
     HostName %h.comp.hkbu.edu.hk
     ForwardAgent yes
