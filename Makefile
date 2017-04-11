@@ -36,6 +36,8 @@ setup-aria2:
 
 setup-cygwin: setup-bash setup-ssh setup-git setup-git-extra setup-autojump setup-fpp
 	./ln.sh "$(shell pwd)/cygwin/minttyrc.sh" "${HOME}/.minttyrc"
+	./ln.sh "$(shell cygpath ${USERPROFILE})/Desktop" "${HOME}/Desktop"
+	./ln.sh "$(shell cygpath ${USERPROFILE})/Downloads" "${HOME}/Downloads"
 	./ln.sh "$(shell cygpath ${USERPROFILE})/Dropbox" "${HOME}/Dropbox"
 	./ln.sh "$(shell cygpath ${USERPROFILE})/Google Drive" "${HOME}/Google Drive"
 	./ln.sh "$(shell cygpath ${USERPROFILE})/Music" "${HOME}/Music"
