@@ -9,19 +9,19 @@ from urllib.request import urlopen
 
 
 def feed_info(feed_url):
-	feed_id = f'feed/{feed_url}'
-	feed_id_quoted = quote(feed_id, safe='')
-	feed_api = f'https://cloud.feedly.com/v3/feeds/{feed_id_quoted}'
+    feed_id = f'feed/{feed_url}'
+    feed_id_quoted = quote(feed_id, safe='')
+    feed_api = f'https://cloud.feedly.com/v3/feeds/{feed_id_quoted}'
 
-	metadata = urlopen(feed_api).read().decode()
-	metadata_json = loads(metadata)
-	return metadata_json
+    metadata = urlopen(feed_api).read().decode()
+    metadata_json = loads(metadata)
+    return metadata_json
 
 
 if __name__ == '__main__':
-	if len(sys.argv) != 2:
-		print('Usage: feedinfo FEED_URL')
-		sys.exit()
+    if len(sys.argv) != 2:
+        print('Usage: feedinfo FEED_URL')
+        sys.exit()
 
-	feed_url = sys.argv[1]
-	pprint(feed_info(feed_url))
+    feed_url = sys.argv[1]
+    pprint(feed_info(feed_url))
