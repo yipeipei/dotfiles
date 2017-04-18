@@ -9,13 +9,16 @@ Host faith
     HostName faith.comp.hkbu.edu.hk
     ForwardAgent yes
 
-Host cs*
+Host cs* gpu*
     User csppyi
     HostName %h.comp.hkbu.edu.hk
     ForwardAgent yes
+    ProxyCommand ssh faith nc %h %p
 
 # bchoi-server: VM with CentOS 6.8, 32GB RAM, 180GB disk
 Host demo
     User csppyi
+    HostName cs9143
     HostName 158.182.9.143
     ForwardAgent yes
+    ProxyCommand ssh faith nc %h %p

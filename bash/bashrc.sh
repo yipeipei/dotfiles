@@ -6,6 +6,11 @@ export DOTFILES="$(dirname "${DOTFILES_BASH}")"
 export PATH="$DOTFILES/bash/do:$PATH"
 export PATH="$DOTFILES/python/do:$PATH"
 
+# macOS
+if [[ "$(uname)" == Darwin ]]; then
+    source "$DOTFILES/macos/bashrc_macos.sh"
+fi
+
 # Cygwin
 # e.g. CYGWIN_NT-6.1
 if [[ "$(uname)" =~ CYGWIN ]]; then
@@ -58,3 +63,4 @@ env | grep DISPLAY
 
 # Python
 export PYTHONSTARTUP="$DOTFILES/python/pythonstartup.py"
+echo python3: "$(python3 --version)"
