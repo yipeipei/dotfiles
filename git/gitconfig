@@ -33,6 +33,10 @@
 	ldf = diff --ignore-all-space --color-words="\\\\[a-zA-Z]+|[{}]|\\\\.|[^\\{}[:space:]]+"
 	ldc = diff --ignore-all-space --color-words="\\\\[a-zA-Z]+|[{}]|\\\\.|[^\\{}[:space:]]+" --cached
 
+	# https://stackoverflow.com/questions/3231759/how-can-i-visualize-per-character-differences-in-a-unified-diff-file
+	cdf = diff --ignore-all-space --color-words="."
+	cdc = diff --ignore-all-space --color-words="." --cached
+
 	# gitignore.io
 	# https://www.gitignore.io/docs
 	ignore = "!gi() { curl -L -s https://www.gitignore.io/api/$@ ;}; gi"

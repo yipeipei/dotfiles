@@ -6,6 +6,7 @@ setup-bash:
 	./ln.sh "$(shell pwd)/bash/bashrc.sh" "${HOME}/.bashrc"
 	./ln.sh "$(shell pwd)/bash/inputrc.sh" "${HOME}/.inputrc"
 	./ln.sh "$(shell pwd)/bash/profile.sh" "${HOME}/.profile"
+	./ln.sh "$(shell pwd)/bash/screenrc.sh" "${HOME}/.screenrc"
 
 setup-ssh:
 	./ln.sh "$(shell pwd)/ssh/config" "${HOME}/.ssh/config"
@@ -36,6 +37,8 @@ setup-aria2:
 
 setup-cygwin: setup-bash setup-ssh setup-git setup-git-extra setup-autojump setup-fpp
 	./ln.sh "$(shell pwd)/cygwin/minttyrc.sh" "${HOME}/.minttyrc"
+	./ln.sh "$(shell cygpath ${USERPROFILE})/Desktop" "${HOME}/Desktop"
+	./ln.sh "$(shell cygpath ${USERPROFILE})/Downloads" "${HOME}/Downloads"
 	./ln.sh "$(shell cygpath ${USERPROFILE})/Dropbox" "${HOME}/Dropbox"
 	./ln.sh "$(shell cygpath ${USERPROFILE})/Google Drive" "${HOME}/Google Drive"
 	./ln.sh "$(shell cygpath ${USERPROFILE})/Music" "${HOME}/Music"
