@@ -3,6 +3,8 @@ Host *
     Protocol 2
     # CVE-2016-0777 and CVE-2016-0778
     UseRoaming no
+    # fix "Write Failed: broken pipe"
+    ServerAliveInterval 120
 
 Host faith
     User csppyi
