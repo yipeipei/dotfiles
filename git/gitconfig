@@ -77,3 +77,5 @@
 	email = yipeipei@gmail.com
 [push]
 	default = simple
+[log]
+	follow = true
