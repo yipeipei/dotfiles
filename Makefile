@@ -32,6 +32,9 @@ setup-fpp:
 setup-prelude:
 	git clone --depth 1 https://github.com/bbatsov/prelude.git ~/.emacs.d
 
+setup-spacemacs:
+	git clone --depth 1 https://github.com/syl20bnr/spacemacs.git ~/.emacs.d
+
 setup-aria2:
 	./ln.sh "$(shell pwd)/aria2" "${HOME}/.aria2"
 
