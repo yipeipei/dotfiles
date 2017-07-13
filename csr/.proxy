@@ -1,0 +1,4 @@
+http_proxy=http://proxy.comp.hkbu.edu.hk:8080
+ftp_proxy=http://proxy.comp.hkbu.edu.hk:8080
+https_proxy=http://proxy.comp.hkbu.edu.hk:8080
+no_proxy=name-node01,localhost,127.0.0.1
