@@ -30,7 +30,12 @@ setup-fpp:
 	./ln.sh ~/.PathPicker/fpp /usr/local/bin/fpp
 
 setup-prelude:
+	rm -rf ~/.emacs.d
 	git clone --depth 1 https://github.com/bbatsov/prelude.git ~/.emacs.d
+
+setup-spacemacs:
+	rm -rf ~/.emacs.d
+	git clone --depth 1 https://github.com/syl20bnr/spacemacs.git ~/.emacs.d
 
 setup-aria2:
 	./ln.sh "$(shell pwd)/aria2" "${HOME}/.aria2"
