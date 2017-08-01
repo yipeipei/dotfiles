@@ -30,7 +30,7 @@ fi
 # new clip
 if [[ "$1" = $GLOB_LINK ]]; then
   echo Link
-  sed -i "3i$1 $DATE_TIME\n\n---\n" "$FILENAME"
+  sed -i "1a\\\n$1 $DATE_TIME\n\n---" "$FILENAME"
   (cd "$DIR" && git add "$FILENAME" && git commit -m "clip" && git diff HEAD^ HEAD)
 else
   echo Undefined
