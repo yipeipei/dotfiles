@@ -29,20 +29,21 @@ fi
 # new file for new month
 if [[ ! -f "$FILENAME" ]]; then
   echo "# $MONTH" >> "$FILENAME"
+  echo "" >> "$FILENAME"
 fi
 
 # new TODO, DONE, INFO
 if [[ "$1" = $GLOB_TODO ]]; then
   echo TODO
-  sed -i "3i$1 $DATE_TIME" "$FILENAME"
+  sed -i "2a$1 $DATE_TIME" "$FILENAME"
   (cd "$DIR" && git add "$FILENAME" && git commit -m "todo" && git diff HEAD^ HEAD)
 elif [[ "$1" = $GLOB_DONE ]]; then
   echo DONE
-  sed -i "3i$1 $DATE_TIME" "$FILENAME"
+  sed -i "2a$1 $DATE_TIME" "$FILENAME"
   (cd "$DIR" && git add "$FILENAME" && git commit -m "done" && git diff HEAD^ HEAD)
 elif [[ "$1" = $GLOB_INFO ]]; then
   echo INFO
-  sed -i "3i$1 $DATE_TIME" "$FILENAME"
+  sed -i "2a$1 $DATE_TIME" "$FILENAME"
   (cd "$DIR" && git add "$FILENAME" && git commit -m "info" && git diff HEAD^ HEAD)
 else
   echo Undefined
