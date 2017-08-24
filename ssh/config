@@ -6,6 +6,11 @@ Host *
     # fix "Write Failed: broken pipe"
     ServerAliveInterval 120
 
+Host rpi3b
+    User pi
+    HostName rpi3b.yipeipei.com
+    ForwardAgent yes
+
 Host faith
     User csppyi
     HostName faith.comp.hkbu.edu.hk
