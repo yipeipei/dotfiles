@@ -11,3 +11,5 @@ brew cask install appcleaner
 brew cask install basictex
 brew cask install quitter
 brew cask install iina
+brew cask install sdformatter
+brew cask install etcher
