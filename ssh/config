@@ -9,7 +9,6 @@ Host *
 Host rpi3b
     User pi
     HostName rpi3b.yipeipei.com
-    Port 4000
     ForwardAgent yes
 
 Host faith
