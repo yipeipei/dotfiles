@@ -1,37 +1,58 @@
-#!/usr/bin/env bash
+#!/usr/bin/env python3
 # Capture random bits
 
-if [[ $# -ne 1 ]]; then
-  echo "Usage: clip '[title](url)'"
-  exit
-fi
+import sys
+import os
+import datetime
+import re
 
-DIR="$(dirname "${DOTFILES}")/clips"
-MONTH="$(date +%Y-%m)"
-FILENAME="$DIR/$MONTH.md"
-DATE_TIME="$(date +%Y-%m-%d\ %H:%M:%S\ %z)"
+def update_dir(dir):
+    if not os.path.isdir(dir):
+        # exit if dir not exits
+        print(dir, 'not exists')
+        sys.exit()
+    else:
+        # update git repo
+        os.system('cd {} && git pull'.format(dir))
 
-GLOB_LINK="\[*\](*)"
+def ensure_file(filename, title):
+    # new file for new month
+    if not os.path.isfile(filename):
+        with open(filename, 'w') as f:
+            f.write('# {}\n'.format(title))
 
-if [[ ! -d "$DIR" ]]; then
-  # exit if DIR not exits
-  echo "$DIR not exists"
-  exit
-else
-  # update git repo
-  (cd "$DIR" && git pull)
-fi
+def write_link(filename, link):
+    # For a naive object, the %z and %Z format codes are replaced by empty strings.
+    DATE_TIME = os.popen('date +%Y-%m-%d\ %H:%M:%S\ %z').read().strip()
+    lines = open(filename).readlines()
+    with open(filename, 'w') as f:
+        f.writelines(lines[:1])
+        f.write('\n')
+        f.write('{} {}\n'.format(link, DATE_TIME))
+        f.write('\n')
+        f.write('---\n')
+        f.writelines(lines[1:])
 
-# new file for new month
-if [[ ! -f "$FILENAME" ]]; then
-  echo "# $MONTH" >> "$FILENAME"
-fi
+def new_clip(link):
+    RE_LINK = '\[.*\]\(.*\)'
+    if re.search(RE_LINK, link):
+        print('Link')
+        DIR = os.path.dirname(os.environ['DOTFILES']) + '/clips'
+        update_dir(DIR)
 
-# new clip
-if [[ "$1" = $GLOB_LINK ]]; then
-  echo Link
-  sed -i "1a\\\n$1 $DATE_TIME\n\n---" "$FILENAME"
-  (cd "$DIR" && git add "$FILENAME" && git commit -m "clip" && git diff HEAD^ HEAD)
-else
-  echo Undefined
-fi
+        MONTH = datetime.datetime.now().strftime('%Y-%m')
+        FILENAME = os.path.join(DIR, MONTH) + '.md'
+        ensure_file(FILENAME, MONTH)
+
+        write_link(FILENAME, link)
+
+        os.system('cd {} && git add {} && git commit -m "clip" && git diff HEAD^ HEAD'.format(DIR, FILENAME))
+    else:
+        print('Undefined')
+
+if __name__ == '__main__':
+    if len(sys.argv) != 2:
+        print("Usage: clip '[title](url)'")
+        sys.exit()
+
+    new_clip(sys.argv[1])
