@@ -23,6 +23,17 @@ def git_commit(git_dir, add_files, with_message, show_changes=True):
         os.system('cd "{}" && git diff HEAD^ HEAD'.format(git_dir))
 
 
+def git_insert(git_dir, filename, header, at_line_no, entry, commit_message):
+    # update
+    git_update(git_dir)
+    # new file if needed
+    ensure_file(filename, header)
+    # insert entry
+    insert_into(filename, at_line_no, entry)
+    # commit
+    git_commit(git_dir, [filename], commit_message)
+
+
 def ensure_file(filename, content_on_create=''):
     if not os.path.isfile(filename):
         with open(filename, 'w') as f:
