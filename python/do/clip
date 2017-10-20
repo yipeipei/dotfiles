@@ -3,37 +3,47 @@
 
 import sys
 import os
-import datetime
 import re
 
+from pyutil import git_update
+from pyutil import git_commit
+from pyutil import ensure_file
+from pyutil import insert_into
+from pyutil import get_datetime
 
-def write_link(filename, link):
-    # For a naive object, the %z and %Z format codes are replaced by empty strings.
-    date_time = os.popen('date +%Y-%m-%d\ %H:%M:%S\ %z').read().strip()
-    lines = open(filename).readlines()
-    with open(filename, 'w') as f:
-        f.writelines(lines[:2])
-        f.write('{} {}\n'.format(link, date_time))
-        f.write('\n')
-        f.write('---\n')
-        f.write('\n')
-        f.writelines(lines[2:])
+template_header = '''\
+# {month}
+
+'''
+
+template_entry = '''\
+{link} {date_time}
+
+---
+
+'''
 
 
 def new_clip(link):
     re_link = '\[.*\]\(.*\)'
     if re.search(re_link, link):
+        date_time = get_datetime()
+        entry = template_entry.format(link=link, date_time=date_time)
+        # echo back
         print('Link')
+        print(entry)
+        # update
         clip_dir = os.path.dirname(os.environ['DOTFILES']) + '/clips'
-        update_dir(clip_dir)
-
-        month = datetime.datetime.now().strftime('%Y-%m')
+        git_update(clip_dir)
+        # new file for new month
+        month = get_datetime('%Y-%m')
         filename = os.path.join(clip_dir, month) + '.md'
-        ensure_file(filename, month)
-
-        write_link(filename, link)
-
-        os.system('cd {} && git add {} && git commit -m "clip" && git diff HEAD^ HEAD'.format(clip_dir, filename))
+        header = template_header.format(month=month)
+        ensure_file(filename, header)
+        # insert entry
+        insert_into(filename, 2, entry)
+        # commit
+        git_commit(clip_dir, [filename], 'clip')
     else:
         print('Undefined')
 
