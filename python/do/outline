@@ -1,50 +1,73 @@
-#!/usr/bin/env bash
+#!/usr/bin/env python3
 # Get more done
 
-if [[ $# -ne 1 ]]; then
-  echo "Usage: outline '- [ ] TODO'"
-  echo "       outline '- [x] DONE'"
-  echo "       outline '- INFO'"
-  exit
-fi
+import sys
+import os
+import datetime
+import re
 
-DIR="$(dirname "${DOTFILES}")/outlines"
-MONTH="$(date +%Y-%m)"
-FILENAME="$DIR/$MONTH.md"
-DATE_TIME="$(date +%Y-%m-%d\ %H:%M:%S\ %z)"
 
-GLOB_TODO="- \[ \] *"
-GLOB_DONE="- \[x\] *"
-GLOB_INFO="- *"
+def update_dir(git_dir):
+    if not os.path.isdir(git_dir):
+        # exit if git_dir not exists
+        print(git_dir, 'not exists')
+        sys.exit()
+    else:
+        # update git repo
+        os.system('cd {} && git pull'.format(git_dir))
 
-if [[ ! -d "$DIR" ]]; then
-  # exit if DIR not exits
-  echo "$DIR not exists"
-  exit
-else
-  # update git repo
-  (cd "$DIR" && git pull)
-fi
 
-# new file for new month
-if [[ ! -f "$FILENAME" ]]; then
-  echo "# $MONTH" >> "$FILENAME"
-  echo "" >> "$FILENAME"
-fi
+def ensure_file(filename, title):
+    # new file for new month
+    if not os.path.isfile(filename):
+        with open(filename, 'w') as f:
+            f.write('# {}\n'.format(title))
+            f.write('\n')
 
-# new TODO, DONE, INFO
-if [[ "$1" = $GLOB_TODO ]]; then
-  echo TODO
-  sed -i "2a$1 $DATE_TIME" "$FILENAME"
-  (cd "$DIR" && git add "$FILENAME" && git commit -m "todo" && git diff HEAD^ HEAD)
-elif [[ "$1" = $GLOB_DONE ]]; then
-  echo DONE
-  sed -i "2a$1 $DATE_TIME" "$FILENAME"
-  (cd "$DIR" && git add "$FILENAME" && git commit -m "done" && git diff HEAD^ HEAD)
-elif [[ "$1" = $GLOB_INFO ]]; then
-  echo INFO
-  sed -i "2a$1 $DATE_TIME" "$FILENAME"
-  (cd "$DIR" && git add "$FILENAME" && git commit -m "info" && git diff HEAD^ HEAD)
-else
-  echo Undefined
-fi
+
+def write_outline(filename, outline):
+    date_time = os.popen('date +%Y-%m-%d\ %H:%M:%S\ %z').read().strip()
+    lines = open(filename).readlines()
+    with open(filename, 'w') as f:
+        f.write(lines[:2])
+        f.write('{} {}\n'.format(outline, date_time))
+        f.write(lines[2:])
+
+
+def new_outline(outline):
+    re_todo = '- \[ \] .*'
+    re_done = '- \[x\] .*'
+    re_info = '- .*'
+    if re.search(re_info, outline):
+        outline_dir = os.path.dirname(os.environ['DOTFILES']) + '/outlines'
+        update_dir(outline_dir)
+
+        month = datetime.datetime.now().strftime('%Y-%m')
+        filename = os.path.join(outline_dir, month) + '.md'
+        ensure_file(filename, month)
+
+        if re.search(re_todo, outline):
+            print('TODO')
+            commit_message = 'todo'
+        elif re.search(re_done, outline):
+            print('DONE')
+            commit_message = 'done'
+        else:
+            print('INFO')
+            commit_message = 'info'
+
+        write_outline(filename, outline)
+
+        os.system('(cd "{}" && git add "{}" && git commit -m "{}" && git diff HEAD^ HEAD)'.format(outline_dir, filename, commit_message))
+    else:
+        print('Undefined')
+
+
+if __name__ == '__main__':
+    if len(sys.argv) != 2:
+        print("Usage: outline '- [ ] TODO'")
+        print("       outline '- [x] DONE'")
+        print("       outline '- INFO'")
+        sys.exit()
+
+    new_outline(sys.argv[1])
