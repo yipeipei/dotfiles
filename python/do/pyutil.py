@@ -17,6 +17,14 @@ def ensure_file(filename, content=''):
             f.write(content)
 
 
+def insert_into(filename, at_line_no, with_content)
+    lines = open(filename).readlines()
+    with open(filename, 'w') as f:
+        f.writelines(lines[:at_line_no])
+        f.write(with_content)
+        f.writelines(lines[at_line_no:])
+
+
 def get_datetime(format='%Y-%m-%d %H:%M:%S %z', via='system'):
     if via == 'python':
         # For a naive object, the %z and %Z format codes are replaced by empty strings.
