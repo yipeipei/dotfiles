@@ -9,3 +9,11 @@ def update_dir(git_dir):
     else:
         # update git repo
         os.system('cd {} && git pull'.format(git_dir))
+
+
+def ensure_file(filename, title):
+    # new file for new month
+    if not os.path.isfile(filename):
+        with open(filename, 'w') as f:
+            f.write('# {}\n'.format(title))
+            f.write('\n')

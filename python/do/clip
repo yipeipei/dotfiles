@@ -7,14 +7,6 @@ import datetime
 import re
 
 
-def ensure_file(filename, title):
-    # new file for new month
-    if not os.path.isfile(filename):
-        with open(filename, 'w') as f:
-            f.write('# {}\n'.format(title))
-            f.write('\n')
-
-
 def write_link(filename, link):
     # For a naive object, the %z and %Z format codes are replaced by empty strings.
     date_time = os.popen('date +%Y-%m-%d\ %H:%M:%S\ %z').read().strip()
