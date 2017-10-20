@@ -5,10 +5,7 @@ import sys
 import os
 import re
 
-from pyutil import git_update
-from pyutil import git_commit
-from pyutil import ensure_file
-from pyutil import insert_into
+from pyutil import git_insert
 from pyutil import get_datetime
 
 template_header = '''\
@@ -39,18 +36,12 @@ def new_outline(outline):
         date_time = get_datetime()
         entry = template_entry.format(outline=outline, date_time=date_time)
         print(entry)
-        # update
-        outline_dir = os.path.dirname(os.environ['DOTFILES']) + '/outlines'
-        git_update(outline_dir)
-        # new file for new month
+        git_dir = os.path.dirname(os.environ['DOTFILES']) + '/outlines'
         month = get_datetime('%Y-%m')
-        filename = os.path.join(outline_dir, month) + '.md'
+        filename = os.path.join(git_dir, month) + '.md'
         header = template_header.format(month=month)
-        ensure_file(filename, header)
-        # insert entry
-        insert_into(filename, 2, entry)
-        # commit
-        git_commit(outline_dir, [filename], commit_message)
+        at_line_no = 2
+        git_insert(git_dir, filename, header, at_line_no, entry, commit_message)
     else:
         print('Undefined')
 
