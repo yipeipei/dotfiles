@@ -11,6 +11,13 @@ def git_update_dir(git_dir):
         os.system('cd {} && git pull'.format(git_dir))
 
 
+def git_commit(git_dir, add_pathnames, with_message, show_changes=True):
+    files = '" "'.join(add_pathnames)
+    os.system('cd "{}" && git add "{}" && git commit -m "{}"'.format(git_dir, files, with_message))
+    if show_changes:
+        os.system('cd "{}" && git diff HEAD^ HEAD')
+
+
 def ensure_file(filename, content_on_create=''):
     if not os.path.isfile(filename):
         with open(filename, 'w') as f:
