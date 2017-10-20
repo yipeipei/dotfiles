@@ -3,31 +3,29 @@
 
 import sys
 import os
-import datetime
 import re
 
+from pyutil import git_update
+from pyutil import git_commit
+from pyutil import ensure_file
+from pyutil import insert_into
+from pyutil import get_datetime
 
-def write_outline(filename, outline):
-    date_time = os.popen('date +%Y-%m-%d\ %H:%M:%S\ %z').read().strip()
-    lines = open(filename).readlines()
-    with open(filename, 'w') as f:
-        f.write(lines[:2])
-        f.write('{} {}\n'.format(outline, date_time))
-        f.write(lines[2:])
+template_header = '''\
+# {month}
+
+'''
+
+template_entry = '''\
+{outline} {date_time}
+'''
 
 
 def new_outline(outline):
     re_todo = '- \[ \] .*'
     re_done = '- \[x\] .*'
     re_info = '- .*'
-    if re.search(re_info, outline):
-        outline_dir = os.path.dirname(os.environ['DOTFILES']) + '/outlines'
-        update_dir(outline_dir)
-
-        month = datetime.datetime.now().strftime('%Y-%m')
-        filename = os.path.join(outline_dir, month) + '.md'
-        ensure_file(filename, month)
-
+    if outline.startswith('- '):
         if re.search(re_todo, outline):
             print('TODO')
             commit_message = 'todo'
@@ -37,10 +35,22 @@ def new_outline(outline):
         else:
             print('INFO')
             commit_message = 'info'
-
-        write_outline(filename, outline)
-
-        os.system('(cd "{}" && git add "{}" && git commit -m "{}" && git diff HEAD^ HEAD)'.format(outline_dir, filename, commit_message))
+        # echo back
+        date_time = get_datetime()
+        entry = template_entry.format(outline=outline, date_time=date_time)
+        print(entry)
+        # update
+        outline_dir = os.path.dirname(os.environ['DOTFILES']) + '/outlines'
+        git_update(outline_dir)
+        # new file for new month
+        month = get_datetime('%Y-%m')
+        filename = os.path.join(outline_dir, month) + '.md'
+        header = template_header.format(month=month)
+        ensure_file(filename, header)
+        # insert entry
+        insert_into(filename, 2, entry)
+        # commit
+        git_commit(outline_dir, [filename], commit_message)
     else:
         print('Undefined')
 
