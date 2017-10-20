@@ -13,14 +13,14 @@ def git_update(git_dir):
         sys.exit()
     else:
         # update git repo
-        os.system('cd {} && git pull'.format(git_dir))
+        os.system('cd "{}" && git pull'.format(git_dir))
 
 
 def git_commit(git_dir, add_files, with_message, show_changes=True):
     files = '" "'.join(add_files)
     os.system('cd "{}" && git add "{}" && git commit -m "{}"'.format(git_dir, files, with_message))
     if show_changes:
-        os.system('cd "{}" && git diff HEAD^ HEAD')
+        os.system('cd "{}" && git diff HEAD^ HEAD'.format(git_dir))
 
 
 def ensure_file(filename, content_on_create=''):
