@@ -11,10 +11,10 @@ def git_update_dir(git_dir):
         os.system('cd {} && git pull'.format(git_dir))
 
 
-def ensure_file(filename, content=''):
+def ensure_file(filename, content_on_create=''):
     if not os.path.isfile(filename):
         with open(filename, 'w') as f:
-            f.write(content)
+            f.write(content_on_create)
 
 
 def insert_into(filename, at_line_no, with_content)
