@@ -22,6 +22,7 @@ def ensure_file(filename, title):
     if not os.path.isfile(filename):
         with open(filename, 'w') as f:
             f.write('# {}\n'.format(title))
+            f.write('\n')
 
 
 def write_link(filename, link):
@@ -29,12 +30,12 @@ def write_link(filename, link):
     date_time = os.popen('date +%Y-%m-%d\ %H:%M:%S\ %z').read().strip()
     lines = open(filename).readlines()
     with open(filename, 'w') as f:
-        f.writelines(lines[:1])
-        f.write('\n')
+        f.writelines(lines[:2])
         f.write('{} {}\n'.format(link, date_time))
         f.write('\n')
         f.write('---\n')
-        f.writelines(lines[1:])
+        f.write('\n')
+        f.writelines(lines[2:])
 
 
 def new_clip(link):
