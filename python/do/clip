@@ -6,14 +6,16 @@ import os
 import datetime
 import re
 
-def update_dir(dir):
-    if not os.path.isdir(dir):
+
+def update_dir(clip_dir):
+    if not os.path.isdir(clip_dir):
         # exit if dir not exits
-        print(dir, 'not exists')
+        print(clip_dir, 'not exists')
         sys.exit()
     else:
         # update git repo
-        os.system('cd {} && git pull'.format(dir))
+        os.system('cd {} && git pull'.format(clip_dir))
+
 
 def ensure_file(filename, title):
     # new file for new month
@@ -21,34 +23,37 @@ def ensure_file(filename, title):
         with open(filename, 'w') as f:
             f.write('# {}\n'.format(title))
 
+
 def write_link(filename, link):
     # For a naive object, the %z and %Z format codes are replaced by empty strings.
-    DATE_TIME = os.popen('date +%Y-%m-%d\ %H:%M:%S\ %z').read().strip()
+    date_time = os.popen('date +%Y-%m-%d\ %H:%M:%S\ %z').read().strip()
     lines = open(filename).readlines()
     with open(filename, 'w') as f:
         f.writelines(lines[:1])
         f.write('\n')
-        f.write('{} {}\n'.format(link, DATE_TIME))
+        f.write('{} {}\n'.format(link, date_time))
         f.write('\n')
         f.write('---\n')
         f.writelines(lines[1:])
 
+
 def new_clip(link):
-    RE_LINK = '\[.*\]\(.*\)'
-    if re.search(RE_LINK, link):
+    re_link = '\[.*\]\(.*\)'
+    if re.search(re_link, link):
         print('Link')
-        DIR = os.path.dirname(os.environ['DOTFILES']) + '/clips'
-        update_dir(DIR)
+        clip_dir = os.path.dirname(os.environ['DOTFILES']) + '/clips'
+        update_dir(clip_dir)
 
-        MONTH = datetime.datetime.now().strftime('%Y-%m')
-        FILENAME = os.path.join(DIR, MONTH) + '.md'
-        ensure_file(FILENAME, MONTH)
+        month = datetime.datetime.now().strftime('%Y-%m')
+        filename = os.path.join(clip_dir, month) + '.md'
+        ensure_file(filename, month)
 
-        write_link(FILENAME, link)
+        write_link(filename, link)
 
-        os.system('cd {} && git add {} && git commit -m "clip" && git diff HEAD^ HEAD'.format(DIR, FILENAME))
+        os.system('cd {} && git add {} && git commit -m "clip" && git diff HEAD^ HEAD'.format(clip_dir, filename))
     else:
         print('Undefined')
+
 
 if __name__ == '__main__':
     if len(sys.argv) != 2:
