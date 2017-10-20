@@ -17,7 +17,11 @@ def ensure_file(filename, content=''):
             f.write(content)
 
 
-def get_datetime(format='%Y-%m-%d %H:%M:%S %z'):
-    # For a naive object, the %z and %Z format codes are replaced by empty strings.
-    # return datetime.datetime.now().strftime(format)
-    return os.popen('date "+{}"'.format(format))
+def get_datetime(format='%Y-%m-%d %H:%M:%S %z', via='system'):
+    if via == 'python':
+        # For a naive object, the %z and %Z format codes are replaced by empty strings.
+        return datetime.datetime.now().strftime(format)
+    elif via == 'system':
+        return os.popen('date "+{}"'.format(format)).read().strip()
+    else:
+        raise NotImplementedError("via='{}'".format(via))
