@@ -6,7 +6,7 @@ import os
 import datetime
 
 
-def git_update_dir(git_dir):
+def git_update(git_dir):
     if not os.path.isdir(git_dir):
         # exit if git_dir not exists
         print(git_dir, 'not exists')
