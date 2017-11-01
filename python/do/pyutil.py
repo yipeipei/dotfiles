@@ -25,7 +25,7 @@ def git_commit(git_dir, add_files, with_message, show_changes=True):
 
 def git_insert(git_dir, filename, header, at_line_no, entry, commit_message):
     # update
-    git_update(git_dir)
+    # git_update(git_dir)
     # new file if needed
     ensure_file(filename, header)
     # insert entry
