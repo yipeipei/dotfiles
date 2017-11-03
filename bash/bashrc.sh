@@ -70,6 +70,7 @@ screen -ls
 
 # Aliases
 alias .,='source $HOME/.bashrc'
+alias .mvrc='mv $HOME/.bashrc $HOME/.bashrc.mv || mv $HOME/.bashrc.mv $HOME/.bashrc'
 alias .sh='env -i /bin/sh'
 alias .bash='env -i /bin/bash --noprofile --norc'
 alias ..='cd ..'
