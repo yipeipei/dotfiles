@@ -61,6 +61,10 @@ def get_datetime(with_format='%Y-%m-%d %H:%M:%S %z', via='system'):
         raise NotImplementedError("via='{}'".format(via))
 
 
+def grep(pattern, files):
+    return os.popen('grep -ni {} {}'.format(pattern, files)).read().strip()
+
+
 def decompose_markdown_link(markdown_link):
     regex_markdown_link = r'\[(.*)\]\((.*)\)'
     match = re.search(regex_markdown_link, markdown_link)
