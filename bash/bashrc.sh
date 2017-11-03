@@ -69,6 +69,11 @@ echo python3: "$(python3 --version)"
 screen -ls
 
 # Aliases
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias .....='cd ../../../..'
 alias c='clear'
 alias e='emacs'
+alias m='make'
 alias s='grep -nir --colour=auto'
