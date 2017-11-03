@@ -4,6 +4,7 @@
 import sys
 import os
 import datetime
+import re
 
 
 def git_update(git_dir):
@@ -57,3 +58,12 @@ def get_datetime(with_format='%Y-%m-%d %H:%M:%S %z', via='system'):
         return os.popen('date "+{}"'.format(with_format)).read().strip()
     else:
         raise NotImplementedError("via='{}'".format(via))
+
+
+def decompose_markdown_link(markdown_link):
+    regex_markdown_link = r'\[(.*)\]\((.*)\)'
+    match = re.search(regex_markdown_link, markdown_link)
+    if match:
+        title = match.group(1)
+        url = match.group(2)
+        return title, url
