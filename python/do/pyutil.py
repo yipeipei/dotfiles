@@ -5,6 +5,7 @@ import sys
 import os
 import datetime
 import re
+import urllib.parse
 
 
 def git_update(git_dir):
@@ -67,3 +68,9 @@ def decompose_markdown_link(markdown_link):
         title = match.group(1)
         url = match.group(2)
         return title, url
+
+
+def url_remove_scheme(url):
+    components = urllib.parse.urlparse(url)
+    scheme = '{}://'.format(components.scheme)
+    return url[len(scheme):]
