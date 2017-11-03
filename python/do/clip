@@ -7,6 +7,9 @@ import re
 
 from pyutil import git_insert
 from pyutil import get_datetime
+from pyutil import decompose_markdown_link
+from pyutil import url_remove_scheme
+from pyutil import grep
 
 template_header = '''\
 # {month}
@@ -30,7 +33,16 @@ def new_clip(link):
         date_time = get_datetime()
         entry = template_entry.format(link=link, date_time=date_time)
         print(entry)
+        # abort if already clipped
+        title, url = decompose_markdown_link(link)
+        url_without_scheme = url_remove_scheme(url)
         git_dir = os.path.dirname(os.environ['DOTFILES']) + '/clips'
+        match = grep(url_without_scheme, git_dir + '/*.md')
+        if match:
+            print('Already clipped')
+            print(match)
+            return
+        # insert entry
         month = get_datetime('%Y-%m')
         filename = os.path.join(git_dir, month) + '.md'
         header = template_header.format(month=month)
