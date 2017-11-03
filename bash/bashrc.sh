@@ -69,6 +69,7 @@ echo python3: "$(python3 --version)"
 screen -ls
 
 # Aliases
+alias .,='source $HOME/.bashrc'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
