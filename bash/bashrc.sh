@@ -67,3 +67,8 @@ echo python3: "$(python3 --version)"
 
 # Screen
 screen -ls
+
+# Aliases
+alias c='clear'
+alias e='emacs'
+alias s='grep -nir --colour=auto'
