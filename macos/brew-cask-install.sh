@@ -6,5 +6,6 @@ brew cask install quitter
 brew cask install appcleaner
 brew cask install macpass
 brew cask install iina
-brew cask install dropbox
-brew cask install dash
+brew cask install visual-studio-code
+# brew cask install dropbox
+# brew cask install dash
