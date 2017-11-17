@@ -13,3 +13,7 @@ sudo tlmgr install multirow  # ! LaTeX Error: File `multirow.sty' not found.
 sudo tlmgr install soul  # ! LaTeX Error: File `soul.sty' not found.
 sudo tlmgr install algorithmicx  # ! LaTeX Error: File `algorithmicx.sty' not found.
 sudo tlmgr install algorithms  # ! LaTeX Error: File `algorithm.sty' not found.
+
+sudo tlmgr install moderncv  # ! LaTeX Error: File `moderncv.sty' not found.
+sudo tlmgr install marvosym  # optional, for icons in moderncv
+sudo tlmgr install fontawesome  # optional, for icons in moderncv
