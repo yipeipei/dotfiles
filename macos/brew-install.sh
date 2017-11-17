@@ -6,3 +6,6 @@ brew install wget
 brew install python3
 brew install emacs
 brew install tcping
+brew install autojump
+brew install fzf
+brew install the_silver_searcher
