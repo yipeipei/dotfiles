@@ -2,6 +2,8 @@
 
 sudo tlmgr update --self
 sudo tlmgr install latexmk
+
+# sig-alternate
 sudo tlmgr install helvetic  # ! I can't find file `phvb8t'.
 sudo tlmgr install enumitem  # ! LaTeX Error: File `enumitem.sty' not found.
 sudo tlmgr install kantlipsum  # ! LaTeX Error: File `kantlipsum.sty' not found.
@@ -14,6 +16,7 @@ sudo tlmgr install soul  # ! LaTeX Error: File `soul.sty' not found.
 sudo tlmgr install algorithmicx  # ! LaTeX Error: File `algorithmicx.sty' not found.
 sudo tlmgr install algorithms  # ! LaTeX Error: File `algorithm.sty' not found.
 
+# moderncv
 sudo tlmgr install moderncv  # ! LaTeX Error: File `moderncv.sty' not found.
 sudo tlmgr install marvosym  # optional, for icons in moderncv
 sudo tlmgr install fontawesome  # optional, for icons in moderncv
