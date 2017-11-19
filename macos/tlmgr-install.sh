@@ -20,3 +20,4 @@ sudo tlmgr install algorithms  # ! LaTeX Error: File `algorithm.sty' not found.
 sudo tlmgr install moderncv  # ! LaTeX Error: File `moderncv.sty' not found.
 sudo tlmgr install marvosym  # optional, for icons in moderncv
 sudo tlmgr install fontawesome  # optional, for icons in moderncv
+sudo tlmgr install cjk  # ! LaTeX Error: File `CJKutf8.sty' not found.
