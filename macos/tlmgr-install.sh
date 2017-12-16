@@ -21,3 +21,8 @@ sudo tlmgr install moderncv  # ! LaTeX Error: File `moderncv.sty' not found.
 sudo tlmgr install marvosym  # optional, for icons in moderncv
 sudo tlmgr install fontawesome  # optional, for icons in moderncv
 sudo tlmgr install cjk  # ! LaTeX Error: File `CJKutf8.sty' not found.
+
+# llncs
+sudo tlmgr install algorithm2e  # ! LaTeX Error: File `algorithm2e.sty' not found.
+sudo tlmgr install ifoddpage  # ! LaTeX Error: File `ifoddpage.sty' not found.
+sudo tlmgr install relsize  # ! LaTeX Error: File `relsize.sty' not found.
