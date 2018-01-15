@@ -33,3 +33,8 @@ sudo tlmgr install totpages  # ! LaTeX Error: File `totpages.sty' not found.
 sudo tlmgr install environ  # ! LaTeX Error: File `environ.sty' not found.
 sudo tlmgr install trimspaces  # ! LaTeX Error: File `trimspaces.sty' not found.
 sudo tlmgr install ncctools  # ! LaTeX Error: File `manyfoot.sty' not found.
+sudo tlmgr install libertine  # You do not have the libertine package installed. Please upgrade your TeX
+sudo tlmgr install inconsolata  # You do not have the zi4 package installed. Please upgrade your TeX
+sudo tlmgr install newtx  # You do not have the newtxmath package installed. Please upgrade your TeX
+sudo tlmgr install mweights  # ! LaTeX Error: File `mweights.sty' not found.
+sudo tlmgr install fontaxes  # ! LaTeX Error: File `fontaxes.sty' not found.
