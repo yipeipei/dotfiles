@@ -26,3 +26,10 @@ sudo tlmgr install cjk  # ! LaTeX Error: File `CJKutf8.sty' not found.
 sudo tlmgr install algorithm2e  # ! LaTeX Error: File `algorithm2e.sty' not found.
 sudo tlmgr install ifoddpage  # ! LaTeX Error: File `ifoddpage.sty' not found.
 sudo tlmgr install relsize  # ! LaTeX Error: File `relsize.sty' not found.
+
+# acmart
+sudo tlmgr install xstring  # ! LaTeX Error: File `xstring.sty' not found.
+sudo tlmgr install totpages  # ! LaTeX Error: File `totpages.sty' not found.
+sudo tlmgr install environ  # ! LaTeX Error: File `environ.sty' not found.
+sudo tlmgr install trimspaces  # ! LaTeX Error: File `trimspaces.sty' not found.
+sudo tlmgr install ncctools  # ! LaTeX Error: File `manyfoot.sty' not found.
