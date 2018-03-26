@@ -27,6 +27,10 @@ export HOMEBREW_FORCE_VENDOR_RUBY=true
 export HOMEBREW_NO_ANALYTICS=true
 export CMAKE_PREFIX_PATH="$HOMEBREW_PREFIX"
 
+# VNC server
+alias vnc-start="vncserver :77 -geometry 1440x900"
+alias vnc-end="vncserver -kill :77"
+
 ##############################################################################
 # If not running interactively, don't do anything
 [[ "$-" != *i* ]] && return
