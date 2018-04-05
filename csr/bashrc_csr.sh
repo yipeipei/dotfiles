@@ -28,8 +28,11 @@ export HOMEBREW_NO_ANALYTICS=true
 export CMAKE_PREFIX_PATH="$HOMEBREW_PREFIX"
 
 # VNC server
+alias vnc-list="vncserver -list"
 alias vnc-start="vncserver :77 -geometry 1440x900"
 alias vnc-end="vncserver -kill :77"
+alias vnc-killall="vncserver -list | grep ^:[0-9] | cut -f1 | xargs vncserver -kill"
+alias vnc-clean="rm -f /tmp/.X77-lock"
 
 ##############################################################################
 # If not running interactively, don't do anything
