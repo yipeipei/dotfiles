@@ -1,5 +1,5 @@
 [core]
-	excludesfile = ~/.gitignore_global
+	excludesfile = ~/.gitignore-global
 	autocrlf = input
 	trustctime = false
 [alias]

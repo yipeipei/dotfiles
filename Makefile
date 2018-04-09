@@ -13,7 +13,7 @@ setup-ssh:
 
 setup-git:
 	./ln.sh "$(shell pwd)/git/gitconfig" "${HOME}/.gitconfig"
-	./ln.sh "$(shell pwd)/git/gitignore_global" "${HOME}/.gitignore_global"
+	./ln.sh "$(shell pwd)/git/gitignore-global" "${HOME}/.gitignore-global"
 
 setup-git-extra:
 	curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash -o ~/.git-completion.bash
