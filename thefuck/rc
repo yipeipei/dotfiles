@@ -1,3 +1,5 @@
 #!/usr/bin/env bash
 
 ####### END-OF-TEMPLATE
+
+eval $(thefuck --alias)
