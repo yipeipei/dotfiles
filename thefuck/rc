@@ -2,4 +2,4 @@
 
 ####### END-OF-TEMPLATE
 
-eval $(thefuck --alias)
+eval "$(thefuck --alias)"
