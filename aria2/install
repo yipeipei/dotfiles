@@ -5,6 +5,6 @@ set -o xtrace  # Print commands and their arguments as they are executed.
 
 ####### END-OF-TEMPLATE
 
-if command -v apt-get ; then
-    sudo apt-get install aria2
+if command -v apt ; then
+    sudo apt install aria2
 fi
