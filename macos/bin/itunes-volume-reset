@@ -6,7 +6,7 @@ set -o xtrace  # Print commands and their arguments as they are executed.
 ####### END-OF-TEMPLATE
 
 osascript << EOF
-    tell application "iTunes"
-        set sound volume to 50
-    end tell
+tell application "iTunes"
+    set sound volume to 50
+end tell
 EOF
