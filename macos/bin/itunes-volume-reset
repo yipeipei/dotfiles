@@ -4,3 +4,9 @@ set -o errexit  # Exit immediately if a command exits with a non-zero status.
 set -o xtrace  # Print commands and their arguments as they are executed.
 
 ####### END-OF-TEMPLATE
+
+osascript << EOF
+    tell application "iTunes"
+        set sound volume to 50
+    end tell
+EOF
