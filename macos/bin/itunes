@@ -4,3 +4,15 @@ set -o errexit  # Exit immediately if a command exits with a non-zero status.
 set -o xtrace  # Print commands and their arguments as they are executed.
 
 ####### END-OF-TEMPLATE
+
+osascript << EOF
+tell application "iTunes"
+    if player state is playing then
+        pause
+    else if player state is paused then
+        play
+    else if player state is stopped then
+        play
+    end if
+end tell
+EOF
