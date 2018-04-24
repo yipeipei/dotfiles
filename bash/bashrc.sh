@@ -22,6 +22,13 @@ if [[ "$(hostname)" =~ ^csr || "$(hostname)" =~ ^gpu ]] ; then
     source "$DOTFILES/csr/bashrc_csr.sh"
 fi
 
+# Set PATH
+for bin in "$DOTFILES"/*/bin
+do
+    PATH="$bin:$PATH"
+done
+export PATH
+
 # Load profile
 for profile in "$DOTFILES"/*/profile
 do
