@@ -22,6 +22,12 @@ if [[ "$(hostname)" =~ ^csr || "$(hostname)" =~ ^gpu ]] ; then
     source "$DOTFILES/csr/bashrc_csr.sh"
 fi
 
+# Load profile
+for profile in "$DOTFILES"/*/profile
+do
+    source "$profile"
+done
+
 ##############################################################################
 # If not running interactively, don't do anything
 [[ "$-" != *i* ]] && return
@@ -82,3 +88,9 @@ alias m='make'
 alias p='python3'
 alias i='ipython'
 alias s='grep -nir --colour=auto'
+
+# Load rc
+for rc in "$DOTFILES"/*/rc
+do
+    source "$rc"
+done
