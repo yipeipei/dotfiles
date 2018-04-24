@@ -14,3 +14,6 @@ path_list.sort()
 print('\nSorted order:')
 for p in path_list:
     print(p)
+
+if len(path_list) != len(set(path_list)):
+    print('\nFound duplicates.')
