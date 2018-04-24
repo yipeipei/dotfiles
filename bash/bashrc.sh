@@ -2,10 +2,6 @@
 export DOTFILES_BASH="$(dirname "$(readlink $HOME/.bashrc)")"
 export DOTFILES="$(dirname "${DOTFILES_BASH}")"
 
-# PATH
-export PATH="$DOTFILES/bash/do:$PATH"
-export PATH="$DOTFILES/python/do:$PATH"
-
 # macOS
 if [[ "$(uname)" == Darwin ]]; then
     source "$DOTFILES/macos/bashrc_macos.sh"

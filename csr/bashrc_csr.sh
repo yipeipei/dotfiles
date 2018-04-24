@@ -2,9 +2,6 @@
 # /opt/hadoop/lib/native/:
 unset LD_LIBRARY_PATH
 
-# PATH
-export PATH="$DOTFILES/csr/do:$PATH"
-
 export CSR_HOME="$HOME"
 export CSR_HDFS="$HOME"
 export CSR_TEMP="/tmp/$USER"
