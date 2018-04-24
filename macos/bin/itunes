@@ -8,10 +8,13 @@ set -o xtrace  # Print commands and their arguments as they are executed.
 osascript << EOF
 tell application "iTunes"
     if player state is playing then
+        set volume output muted true
         pause
     else if player state is paused then
+        set volume output muted false
         play
     else if player state is stopped then
+        set volume output muted false
         play
     end if
 end tell
