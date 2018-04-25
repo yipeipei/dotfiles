@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+set -o errexit  # Exit immediately if a command exits with a non-zero status.
+set -o xtrace  # Print commands and their arguments as they are executed.
+
+####### END-OF-TEMPLATE
+
+if [[ $# -ne 2 ]]; then
+    echo Usage: wget-pattern PATTERN URL
+    echo Download all links in URL if filename of the link matches PATTERN
+    exit
+fi
+
+wget --recursive --level=1 --accept "$1" "$2"
