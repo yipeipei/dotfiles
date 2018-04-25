@@ -11,4 +11,4 @@ if [[ $# -ne 2 ]]; then
     exit
 fi
 
-wget --recursive --level=1 --accept-regex "$1" "$2"
+wget --recursive --level=1 --no-directories --accept-regex "$1" "$2"
