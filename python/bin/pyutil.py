@@ -77,4 +77,7 @@ def decompose_markdown_link(markdown_link):
 def url_remove_scheme(url):
     components = urllib.parse.urlparse(url)
     scheme = '{}://'.format(components.scheme)
-    return url[len(scheme):]
+    url_without_scheme = url[len(scheme):]
+    if url_without_scheme.startswith('www.'):
+        return url_without_scheme[len('www.'):]
+    return url_without_scheme
