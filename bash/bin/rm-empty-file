@@ -5,4 +5,4 @@ set -o xtrace  # Print commands and their arguments as they are executed.
 
 ####### END-OF-TEMPLATE
 
-find "$@" -type d -empty -delete
+find "$@" -type f -empty -delete
