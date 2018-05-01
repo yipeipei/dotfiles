@@ -4,3 +4,16 @@ set -o errexit  # Exit immediately if a command exits with a non-zero status.
 set -o xtrace  # Print commands and their arguments as they are executed.
 
 ####### END-OF-TEMPLATE
+
+if [[ $# -lt 2 ]]; then
+    echo Usage: smv SRC DEST
+    echo "Sync and remove synchronized files (non-dir)"
+    exit
+fi
+
+# Safari downloads: *.download
+# Chrome downloads: *.crdownload
+# Firefox downloads: *.part
+rsync --archive --verbose --compress \
+--exclude='*.download' --exclude='*.crdownload' --exclude='*.part' \
+--remove-source-files "$@"
