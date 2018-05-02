@@ -1,3 +1,8 @@
 #!/usr/bin/env bash
 
 ####### END-OF-TEMPLATE
+
+# IPython style tab completion
+if command -v find_pycompletion.sh > /dev/null ; then
+    source "$(find_pycompletion.sh)"
+fi
