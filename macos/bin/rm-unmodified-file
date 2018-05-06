@@ -4,3 +4,12 @@ set -o errexit  # Exit immediately if a command exits with a non-zero status.
 set -o xtrace  # Print commands and their arguments as they are executed.
 
 ####### END-OF-TEMPLATE
+
+for f in "$@"
+do
+    created_time="$(stat -f %B "$f")"
+    modified_time="$(stat -f %m "$f")"
+    if [[ $created_time -eq $modified_time ]]; then
+        rm "$f"
+    fi
+done
