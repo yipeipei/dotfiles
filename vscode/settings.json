@@ -4,4 +4,6 @@
     },
     "editor.minimap.enabled": false,
     "workbench.activityBar.visible": false,
+    "telemetry.enableTelemetry": false,
+    "telemetry.enableCrashReporter": false,
 }
