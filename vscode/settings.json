@@ -6,4 +6,5 @@
     "workbench.activityBar.visible": false,
     "telemetry.enableTelemetry": false,
     "telemetry.enableCrashReporter": false,
+    "markdown-preview-enhanced.usePandocParser": true,
 }
