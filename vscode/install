@@ -4,3 +4,6 @@ set -o errexit  # Exit immediately if a command exits with a non-zero status.
 set -o xtrace  # Print commands and their arguments as they are executed.
 
 ####### END-OF-TEMPLATE
+
+ln -s "$DOTFILES/vscode/settings.json" "$HOME/Library/Application Support/Code/User/settings.json"
+ln -s "$DOTFILES/vscode/keybindings.json" "$HOME/Library/Application Support/Code/User/keybindings.json"
