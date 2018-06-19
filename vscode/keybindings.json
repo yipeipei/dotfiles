@@ -10,4 +10,8 @@
         "command": "-rewrap.rewrapComment",
         "when": "editorTextFocus"
     },
+    {
+        "key": "alt+cmd+o",
+        "command": "editor.action.openLink"
+    },
 ]
