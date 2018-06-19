@@ -2,4 +2,6 @@
     "gitlens.advanced.messages": {
         "suppressShowKeyBindingsNotice": true
     },
+    "editor.minimap.enabled": false,
+    "workbench.activityBar.visible": false,
 }
