@@ -38,6 +38,7 @@ sudo tlmgr install inconsolata  # You do not have the zi4 package installed. Ple
 sudo tlmgr install newtx  # You do not have the newtxmath package installed. Please upgrade your TeX
 sudo tlmgr install mweights  # ! LaTeX Error: File `mweights.sty' not found.
 sudo tlmgr install fontaxes  # ! LaTeX Error: File `fontaxes.sty' not found.
+sudo tlmgr install boondox  # Font \csname\endcsname=zxxrl7z at 9.0pt not loadable: Metric (TFM) file not found.
 
 # IEEEtran
 sudo tlmgr install palatino  # Font OT1/ppl/m/n/10=pplr7t at 10.0pt not loadable: Metric (TFM) file not found.
