@@ -10,3 +10,16 @@ osascript -e "set volume output volume 50"
 osascript -e "set volume input volume 50"
 osascript -e "set volume alert volume 100"  # percentage of output volume
 osascript -e "set volume output muted true"
+#!/usr/bin/env bash
+
+set -o errexit  # Exit immediately if a command exits with a non-zero status.
+set -o xtrace  # Print commands and their arguments as they are executed.
+
+####### END-OF-TEMPLATE
+
+# volume, an integer from 0 to 100.
+osascript << EOF
+tell application "iTunes"
+    set sound volume to 50
+end tell
+EOF
