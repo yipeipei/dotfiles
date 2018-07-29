@@ -6,10 +6,10 @@ set -o xtrace  # Print commands and their arguments as they are executed.
 ####### END-OF-TEMPLATE
 
 # volume, an integer from 0 to 100.
-osascript -e "set volume output muted true"
 osascript -e "set volume output volume 50"
 osascript -e "set volume input volume 50"
 osascript -e "set volume alert volume 100"  # percentage of output volume
+osascript -e "set volume output muted true"
 
 # volume, an integer from 0 to 100.
 osascript << EOF
