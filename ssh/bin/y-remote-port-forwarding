@@ -11,12 +11,14 @@ if [[ $# -lt 2 ]]; then
     exit
 fi
 
+# Flow: --> REMOTE_ADDRESS:REMOTE_PORT (REMOTE) --> local --> HOST:HOST_PORT
+
 REMOTE_ADDRESS=localhost
 REMOTE_PORT=$2
 
+REMOTE=$1
+
 HOST=localhost
 HOST_PORT=$2
-
-REMOTE=$1
 
 ssh -nNT -R "$REMOTE_ADDRESS:$REMOTE_PORT:$HOST:$HOST_PORT" "$REMOTE"

@@ -11,6 +11,8 @@ if [[ $# -ne 1 ]]; then
     exit
 fi
 
+# Flow: --> LOCAL:LOCAL_PORT (local) --> REMOTE -->
+
 LOCAL=localhost
 LOCAL_PORT=$1
 

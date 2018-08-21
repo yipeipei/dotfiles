@@ -11,7 +11,7 @@ if [[ $# -lt 2 ]]; then
     exit
 fi
 
-# Flow: --> LOCAL_ADDRESS:LOCAL_PORT --> REMOTE --> HOST:HOST_PORT
+# Flow: --> LOCAL_ADDRESS:LOCAL_PORT (local) --> REMOTE --> HOST:HOST_PORT
 
 LOCAL_ADDRESS=localhost
 LOCAL_PORT=$2
