@@ -11,7 +11,7 @@ if [[ $# -lt 2 ]]; then
     exit
 fi
 
-LOCAL=localhost
+LOCAL_ADDRESS=localhost
 LOCAL_PORT=$2
 
 HOST=localhost
@@ -19,4 +19,4 @@ HOST_PORT=$2
 
 REMOTE=$1
 
-ssh -nNT -L "$LOCAL:$LOCAL_PORT:$HOST:$HOST_PORT" "$REMOTE"
+ssh -nNT -L "$LOCAL_ADDRESS:$LOCAL_PORT:$HOST:$HOST_PORT" "$REMOTE"
