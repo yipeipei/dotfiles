@@ -4,3 +4,16 @@ set -o errexit  # Exit immediately if a command exits with a non-zero status.
 set -o xtrace  # Print commands and their arguments as they are executed.
 
 ####### END-OF-TEMPLATE
+
+if [[ $# -ne 1 ]]; then
+    echo Usage: y-dynamic-port-forwarding PORT REMOTE
+    echo Forward PORT on local via REMOTE
+    exit
+fi
+
+LOCAL=localhost
+LOCAL_PORT=$1
+
+REMOTE=$2
+
+ssh -D "$LOCAL:$LOCAL_PORT" "$REMOTE"
