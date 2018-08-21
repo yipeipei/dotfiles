@@ -5,8 +5,8 @@ set -o xtrace  # Print commands and their arguments as they are executed.
 
 ####### END-OF-TEMPLATE
 
-if [[ $# -ne 1 ]]; then
-    echo Usage: y-dynamic-port-forwarding PORT REMOTE
+if [[ $# -ne 2 ]]; then
+    echo Usage: y-dynamic-port-forwarding REMOTE PORT
     echo Forward PORT on local via REMOTE
     exit
 fi
@@ -14,8 +14,8 @@ fi
 # Flow: --> LOCAL:LOCAL_PORT (local) --> REMOTE -->
 
 LOCAL=localhost
-LOCAL_PORT=$1
+LOCAL_PORT=$2
 
-REMOTE=$2
+REMOTE=$1
 
 ssh -nNT -D "$LOCAL:$LOCAL_PORT" "$REMOTE"

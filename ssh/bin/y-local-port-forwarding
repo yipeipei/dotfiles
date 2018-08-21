@@ -5,7 +5,7 @@ set -o xtrace  # Print commands and their arguments as they are executed.
 
 ####### END-OF-TEMPLATE
 
-if [[ $# -lt 2 ]]; then
+if [[ $# -ne 2 ]]; then
     echo Usage: y-local-port-forwarding REMOTE PORT
     echo Forward PORT on local to PORT on REMOTE
     exit
