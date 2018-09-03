@@ -6,6 +6,7 @@ sudo tlmgr install latexmk
 # sig-alternate
 sudo tlmgr install helvetic  # ! I can't find file `phvb8t'.
 sudo tlmgr install enumitem  # ! LaTeX Error: File `enumitem.sty' not found.
+sudo tlmgr install lipsum  # ! LaTeX Error: File `lipsum.sty' not found.
 sudo tlmgr install kantlipsum  # ! LaTeX Error: File `kantlipsum.sty' not found.
 sudo tlmgr install preprint  # ! LaTeX Error: File `balance.sty' not found.
 sudo tlmgr install comment  # ! LaTeX Error: File `comment.sty' not found.
