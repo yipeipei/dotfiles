@@ -9,5 +9,6 @@ brew cask install iina
 brew cask install appgrid
 brew cask install visual-studio-code
 brew cask install anki
+brew cask install firefox
 # brew cask install dropbox
 # brew cask install dash
