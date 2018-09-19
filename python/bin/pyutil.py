@@ -62,7 +62,7 @@ def get_datetime(with_format='%Y-%m-%d %H:%M:%S %z', via='system'):
 
 
 def grep(pattern, files):
-    return os.popen('grep -niF {} {}'.format(pattern, files)).read().strip()
+    return os.popen('grep -niF "{}" {}'.format(pattern, files)).read().strip()
 
 
 def decompose_markdown_link(markdown_link):
