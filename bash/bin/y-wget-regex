@@ -6,9 +6,9 @@ set -o xtrace  # Print commands and their arguments as they are executed.
 ####### END-OF-TEMPLATE
 
 if [[ $# -ne 2 ]]; then
-    echo Usage: wget-pattern PATTERN URL
-    echo Download all links in URL if filename of the link matches PATTERN
+    echo Usage: wget-regex REGEX URL
+    echo Download all links in URL if the complete link matches REGEX
     exit
 fi
 
-wget --recursive --level=1 --no-directories --accept "$1" "$2"
+wget --recursive --level=1 --no-directories --accept-regex "$1" "$2"
