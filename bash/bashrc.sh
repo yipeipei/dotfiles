@@ -56,12 +56,13 @@ if [ -f ~/.git-prompt.sh ]; then
     source ~/.git-prompt.sh
 fi
 
+RESET_ALL="\[\e[0m\]"
 RED="\[$(tput setaf 1)\]"
 GREEN="\[$(tput setaf 2)\]"
 YELLOW="\[$(tput setaf 3)\]"
 BLUE="\[$(tput setaf 4)\]"
 
-PS1="\[\e]0;\u@\h:\w\a\]\n$GREEN\u@\h$YELLOW:\w$GREEN\$(__git_ps1) $YELLOW\$?\[\e[0m\]\n\$ "
+PS1="\[\e]0;\u@\h:\w\a\]\n$GREEN\u@\h$YELLOW:\w$GREEN\$(__git_ps1) $YELLOW\$?$RESET_ALL\n\$ "
 
 # History
 export HISTSIZE=1000000
