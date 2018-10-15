@@ -9,7 +9,7 @@ cryptography==1.7.2
 cssselect==1.0.1
 decorator==4.0.11
 entrypoints==0.2.2
-Flask==0.12
+flask ~> 0.12.3
 html5lib==0.9999999
 idna==2.2
 incremental==16.10.1
@@ -47,7 +47,7 @@ pyasn1-modules==0.0.8
 pycparser==2.17
 PyDispatcher==2.0.5
 Pygments==2.2.0
-pyOpenSSL==16.2.0
+pyopenssl ~> 17.5.0
 pyparsing==2.1.10
 python-dateutil==2.6.0
 pythonpy==0.4.11
