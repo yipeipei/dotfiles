@@ -64,7 +64,7 @@ BLUE="\[$(tput setaf 4)\]"
 
 TIME="\D{%F %T}"
 
-PS1="\[\e]0;\u@\h:\w\a\]\n$GREEN\u@\h$YELLOW:\w$GREEN\$(__git_ps1) $YELLOW$TIME $GREEN\$?$RESET_ALL\n\$ "
+PS1="\[\e]0;\u@\h:\w\a\]\n$GREEN\$?\n$GREEN\u@\h$YELLOW:\w $GREEN$TIME$YELLOW\$(__git_ps1) $RESET_ALL\n\$ "
 
 # History
 export HISTSIZE=1000000
