@@ -6,6 +6,11 @@ Host *
     # fix "Write Failed: broken pipe"
     ServerAliveInterval 120
 
+# Enabling SSH connections over HTTPS
+Host github.com
+    Hostname ssh.github.com
+    Port 443
+
 Host rpi3b
     User pi
     HostName rpi3b.yipeipei.com
