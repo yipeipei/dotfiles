@@ -73,6 +73,10 @@ export HISTFILESIZE=1000000
 # Display
 env | grep DISPLAY
 
+# Editor
+export VISUAL=vim
+export EDITOR="$VISUAL"
+
 # Python
 export PYTHONSTARTUP="$DOTFILES/python/pythonstartup.py"
 echo python3: "$(python3 --version)"
