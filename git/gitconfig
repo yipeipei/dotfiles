@@ -72,7 +72,7 @@
 	fm = config core.fileMode
 	fmt = "!f() { git -c core.fileMode=true $*; }; f"
 	fmf = "!f() { git -c core.fileMode=false $*; }; f"
-	lenovo = !git config user.name "Peipei YI" && git config user.email "pyi@lenovo.com"
+	lenovo = !git config user.name 'Peipei YI' && git config user.email 'pyi@lenovo.com'
 [user]
 	name = YI Peipei
 	email = yipeipei@gmail.com
