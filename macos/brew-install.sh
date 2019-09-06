@@ -9,3 +9,5 @@ brew install tcping
 brew install autojump
 brew install fzf
 brew install the_silver_searcher
+brew install pandoc
+brew install pass
