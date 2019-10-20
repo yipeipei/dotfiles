@@ -43,7 +43,7 @@ source "$DOTFILES/ssh/auto-launch-ssh-agent.sh"
 ssh-add -l -E md5
 
 # Git
-source "$DOTFILES/git/gitrc.sh"
+# source "$DOTFILES/git/gitrc.sh"
 env | grep GIT_
 
 # Autocomplete git commands, branch and tag names
