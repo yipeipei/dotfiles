@@ -11,3 +11,4 @@ brew install fzf
 brew install the_silver_searcher
 brew install pandoc
 brew install pass
+brew install openconnect
