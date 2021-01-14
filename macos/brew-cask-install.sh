@@ -2,6 +2,7 @@
 
 brew tap caskroom/cask
 
+brew cask install hammerspoon
 brew cask install quitter
 brew cask install appcleaner
 brew cask install macpass
